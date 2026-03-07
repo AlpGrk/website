@@ -227,7 +227,7 @@
     </div>
 
     <ul class="task-list" id="task-list"></ul>
-    <p class="empty-msg" id="empty-msg" style="display:none;">No tasks here.</p>
+    <p class="empty-msg" id="empty-msg" style="display:none;"></p>
   </div>
 
   <script>
@@ -391,7 +391,14 @@
       list.innerHTML = '';
       visible.forEach(task => list.appendChild(renderTaskItem(task)));
 
-      emptyMsg.style.display = visible.length === 0 ? 'block' : 'none';
+      if (visible.length === 0) {
+        if (currentFilter === 'active') emptyMsg.textContent = 'No active tasks.';
+        else if (currentFilter === 'completed') emptyMsg.textContent = 'No completed tasks.';
+        else emptyMsg.textContent = 'No tasks yet.';
+        emptyMsg.style.display = 'block';
+      } else {
+        emptyMsg.style.display = 'none';
+      }
     }
 
     // Add task handlers
