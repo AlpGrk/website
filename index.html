@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<!--
+  PRIVACY & TRACKING POLICY — DO NOT ADD THIRD-PARTY SCRIPTS
+  ============================================================
+  This app is intentionally zero-tracking by design:
+
+  - No analytics (no Google Analytics, Plausible, Mixpanel, etc.)
+  - No tracking pixels or beacon requests
+  - No cookies (localStorage is used only for task persistence, never sent to a server)
+  - No external scripts, fonts, or stylesheets loaded from CDNs
+  - No account creation, login, or personal data collection of any kind
+
+  All functionality is self-contained in this single HTML file.
+  Before adding any external resource or third-party script, reconsider whether
+  it is truly necessary — the no-tracking guarantee is a core product promise.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,27 +28,30 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 16px;
-      background: #ffffff;
+      background: #f5f5f5;
       color: #333;
       min-height: 100vh;
       padding: 24px 16px;
-      overflow-x: hidden;
     }
 
     .container {
       max-width: 600px;
-      width: 100%;
       margin: 0 auto;
-      overflow-x: hidden;
     }
 
     h1 {
       font-size: 1.75rem;
       font-weight: 700;
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 6px;
       color: #111;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
     }
 
     .add-form {
@@ -47,7 +65,7 @@
       padding: 10px 14px;
       border: 1px solid #ddd;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 1rem;
       background: #fff;
       outline: none;
       transition: border-color 0.15s;
@@ -64,7 +82,6 @@
       font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.15s, opacity 0.15s;
-      min-height: 44px;
     }
 
     .btn-primary {
@@ -72,8 +89,7 @@
       color: #fff;
     }
 
-    .btn-primary:hover,
-    .btn-primary:active {
+    .btn-primary:hover {
       background: #357abd;
     }
 
@@ -82,8 +98,7 @@
       color: #555;
     }
 
-    .btn-secondary:hover,
-    .btn-secondary:active {
+    .btn-secondary:hover {
       background: #d4d4d4;
     }
 
@@ -92,15 +107,13 @@
       color: #c0392b;
     }
 
-    .btn-danger:hover,
-    .btn-danger:active {
+    .btn-danger:hover {
       background: #fde8e8;
     }
 
     .btn-sm {
-      padding: 10px 14px;
+      padding: 5px 10px;
       font-size: 0.8rem;
-      min-height: 44px;
     }
 
     .filters {
@@ -118,9 +131,6 @@
       background: #fff;
       color: #555;
       transition: all 0.15s;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
     }
 
     .filter-btn.active {
@@ -129,8 +139,7 @@
       color: #fff;
     }
 
-    .filter-btn:hover:not(.active),
-    .filter-btn:active:not(.active) {
+    .filter-btn:hover:not(.active) {
       background: #f0f0f0;
     }
 
@@ -154,16 +163,6 @@
     .task-item.completed .task-title {
       text-decoration: line-through;
       color: #aaa;
-    }
-
-    .task-checkbox-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-      cursor: pointer;
     }
 
     .task-checkbox {
@@ -198,7 +197,7 @@
       padding: 6px 10px;
       border: 1px solid #4a90e2;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 1rem;
       outline: none;
     }
 
@@ -210,21 +209,15 @@
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 16px 12px;
-      }
-
       h1 {
         font-size: 1.4rem;
-        margin-bottom: 16px;
       }
 
       .add-form {
         flex-direction: column;
       }
 
-      .add-form input,
-      .add-form button {
+      .add-form input {
         width: 100%;
       }
 
@@ -233,22 +226,12 @@
         gap: 4px;
       }
     }
-
-    @media (max-width: 360px) {
-      body {
-        padding: 12px 8px;
-      }
-
-      .task-item {
-        padding: 10px 10px;
-        gap: 8px;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>My Todo List</h1>
+    <p class="tagline">No account needed. Start adding tasks instantly.</p>
 
     <div class="add-form">
       <input
@@ -267,11 +250,11 @@
     </div>
 
     <ul class="task-list" id="task-list"></ul>
-    <p class="empty-msg" id="empty-msg" style="display:none;"></p>
+    <p class="empty-msg" id="empty-msg" style="display:none;">No tasks here.</p>
   </div>
 
   <script>
-    const STORAGE_KEY = 'mytodolist_tasks';
+    const STORAGE_KEY = 'todo_tasks';
     let tasks = [];
     let currentFilter = 'all';
 
@@ -343,10 +326,6 @@
       checkbox.setAttribute('aria-label', 'Mark task complete');
       checkbox.addEventListener('change', () => toggleTask(task.id));
 
-      const checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'task-checkbox-label';
-      checkboxLabel.appendChild(checkbox);
-
       const titleSpan = document.createElement('span');
       titleSpan.className = 'task-title';
       titleSpan.textContent = task.title;
@@ -367,7 +346,7 @@
       actions.appendChild(editBtn);
       actions.appendChild(deleteBtn);
 
-      li.appendChild(checkboxLabel);
+      li.appendChild(checkbox);
       li.appendChild(titleSpan);
       li.appendChild(actions);
 
@@ -383,10 +362,6 @@
       checkbox.checked = task.completed;
       checkbox.setAttribute('aria-label', 'Mark task complete');
       checkbox.addEventListener('change', () => toggleTask(task.id));
-
-      const checkboxLabel = document.createElement('label');
-      checkboxLabel.className = 'task-checkbox-label';
-      checkboxLabel.appendChild(checkbox);
 
       const editForm = document.createElement('div');
       editForm.className = 'task-edit-form';
@@ -424,7 +399,7 @@
       editForm.appendChild(saveBtn);
       editForm.appendChild(cancelBtn);
 
-      li.appendChild(checkboxLabel);
+      li.appendChild(checkbox);
       li.appendChild(editForm);
 
       editInput.focus();
@@ -439,14 +414,7 @@
       list.innerHTML = '';
       visible.forEach(task => list.appendChild(renderTaskItem(task)));
 
-      if (visible.length === 0) {
-        if (currentFilter === 'active') emptyMsg.textContent = 'No active tasks.';
-        else if (currentFilter === 'completed') emptyMsg.textContent = 'No completed tasks.';
-        else emptyMsg.textContent = 'No tasks yet.';
-        emptyMsg.style.display = 'block';
-      } else {
-        emptyMsg.style.display = 'none';
-      }
+      emptyMsg.style.display = visible.length === 0 ? 'block' : 'none';
     }
 
     // Add task handlers
