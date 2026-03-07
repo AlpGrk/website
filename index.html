@@ -13,15 +13,19 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f5f5;
+      font-size: 16px;
+      background: #ffffff;
       color: #333;
       min-height: 100vh;
       padding: 24px 16px;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 600px;
+      width: 100%;
       margin: 0 auto;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -43,7 +47,7 @@
       padding: 10px 14px;
       border: 1px solid #ddd;
       border-radius: 6px;
-      font-size: 1rem;
+      font-size: 16px;
       background: #fff;
       outline: none;
       transition: border-color 0.15s;
@@ -60,6 +64,7 @@
       font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.15s, opacity 0.15s;
+      min-height: 44px;
     }
 
     .btn-primary {
@@ -67,7 +72,8 @@
       color: #fff;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:active {
       background: #357abd;
     }
 
@@ -76,7 +82,8 @@
       color: #555;
     }
 
-    .btn-secondary:hover {
+    .btn-secondary:hover,
+    .btn-secondary:active {
       background: #d4d4d4;
     }
 
@@ -85,13 +92,15 @@
       color: #c0392b;
     }
 
-    .btn-danger:hover {
+    .btn-danger:hover,
+    .btn-danger:active {
       background: #fde8e8;
     }
 
     .btn-sm {
-      padding: 5px 10px;
+      padding: 10px 14px;
       font-size: 0.8rem;
+      min-height: 44px;
     }
 
     .filters {
@@ -109,6 +118,9 @@
       background: #fff;
       color: #555;
       transition: all 0.15s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .filter-btn.active {
@@ -117,7 +129,8 @@
       color: #fff;
     }
 
-    .filter-btn:hover:not(.active) {
+    .filter-btn:hover:not(.active),
+    .filter-btn:active:not(.active) {
       background: #f0f0f0;
     }
 
@@ -141,6 +154,16 @@
     .task-item.completed .task-title {
       text-decoration: line-through;
       color: #aaa;
+    }
+
+    .task-checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      cursor: pointer;
     }
 
     .task-checkbox {
@@ -175,7 +198,7 @@
       padding: 6px 10px;
       border: 1px solid #4a90e2;
       border-radius: 5px;
-      font-size: 1rem;
+      font-size: 16px;
       outline: none;
     }
 
@@ -187,21 +210,38 @@
     }
 
     @media (max-width: 480px) {
+      body {
+        padding: 16px 12px;
+      }
+
       h1 {
         font-size: 1.4rem;
+        margin-bottom: 16px;
       }
 
       .add-form {
         flex-direction: column;
       }
 
-      .add-form input {
+      .add-form input,
+      .add-form button {
         width: 100%;
       }
 
       .task-actions {
         flex-direction: column;
         gap: 4px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      body {
+        padding: 12px 8px;
+      }
+
+      .task-item {
+        padding: 10px 10px;
+        gap: 8px;
       }
     }
   </style>
@@ -303,6 +343,10 @@
       checkbox.setAttribute('aria-label', 'Mark task complete');
       checkbox.addEventListener('change', () => toggleTask(task.id));
 
+      const checkboxLabel = document.createElement('label');
+      checkboxLabel.className = 'task-checkbox-label';
+      checkboxLabel.appendChild(checkbox);
+
       const titleSpan = document.createElement('span');
       titleSpan.className = 'task-title';
       titleSpan.textContent = task.title;
@@ -323,7 +367,7 @@
       actions.appendChild(editBtn);
       actions.appendChild(deleteBtn);
 
-      li.appendChild(checkbox);
+      li.appendChild(checkboxLabel);
       li.appendChild(titleSpan);
       li.appendChild(actions);
 
@@ -339,6 +383,10 @@
       checkbox.checked = task.completed;
       checkbox.setAttribute('aria-label', 'Mark task complete');
       checkbox.addEventListener('change', () => toggleTask(task.id));
+
+      const checkboxLabel = document.createElement('label');
+      checkboxLabel.className = 'task-checkbox-label';
+      checkboxLabel.appendChild(checkbox);
 
       const editForm = document.createElement('div');
       editForm.className = 'task-edit-form';
@@ -376,7 +424,7 @@
       editForm.appendChild(saveBtn);
       editForm.appendChild(cancelBtn);
 
-      li.appendChild(checkbox);
+      li.appendChild(checkboxLabel);
       li.appendChild(editForm);
 
       editInput.focus();
