@@ -1,194 +1,170 @@
-# Tek Sayfalık Basit Website Planı
+## 1. Projenin amacı
 
-## Amaç
+Kullanıcının basit şekilde yapılacak işler listesi oluşturabildiği, düzenleyebildiği ve tamamlandı olarak işaretleyebildiği bir web sitesi yapılacak.
 
-Aşırı basit, tek sayfalık bir web sitesi hazırlanacak.
+## 2. Temel özellikler
 
-Bu doküman, projenin kapsamını, temel ihtiyaçlarını ve geliştirme sırasını netleştirmek için hazırlanmıştır. Amaç; gereksiz detaylara girmeden, hızlıca hayata geçirilebilecek sade bir website için net bir çerçeve oluşturmaktır.
+İlk versiyonda sadece şu özellikler olsun:
 
----
+* Yeni görev ekleme
+* Görevi listeleme
+* Görevi tamamlandı / tamamlanmadı olarak işaretleme
+* Görevi silme
+* Görevi düzenleme
+* Tamamlanan ve tamamlanmayan görevleri ayırma
+* Basit ve mobil uyumlu tasarım
 
-## Proje Tanımı
+## 3. İlk versiyon kapsamı
 
-Yapılacak site tek sayfa olacak. Genel yaklaşım; temiz görünen, hızlı açılan, anlaşılır ve mobilde düzgün çalışan bir tanıtım sayfası hazırlamaktır.
+Yazılımcıya şu şekilde net verebilirsin:
 
-Öncelikler:
+### MVP kapsamı
 
-* sade tasarım
-* hızlı geliştirme
-* kolay yayına alma
-* mobil uyumluluk
-* kolay içerik güncelleme
+* Tek sayfalık bir TODO uygulaması
+* Kullanıcı bir input alanına görev yazıp ekleyebilmeli
+* Eklenen görevler liste halinde görünmeli
+* Her görevde şu aksiyonlar olmalı:
 
----
+  * Tamamlandı olarak işaretle
+  * Düzenle
+  * Sil
+* Sayfa yenilense bile görevler kaybolmamalı
 
-## Kapsam
+### Veri saklama
 
-### Dahil Olanlar
+İlk aşamada backend gerekmeden şu yöntem yeterli:
 
-* tek sayfa yapı
-* responsive tasarım
-* basit bir üst alan
-* giriş/hero bölümü
-* kısa açıklama alanları
-* bir ana aksiyon butonu
-* footer
-* temel SEO ayarları
-* hafif ve hızlı çalışan yapı
+* Görevler tarayıcıda Local Storage içinde saklansın
 
-### Dahil Olmayanlar
+Bu sayede daha hızlı ve daha ucuz geliştirme olur.
 
-* çok sayfalı yapı
-* admin panel
-* kullanıcı girişi
-* ödeme sistemi
-* blog altyapısı
-* backend geliştirmesi gerektiren karmaşık işlemler
-* ileri seviye animasyonlar
-* çok dilli yapı
+## 4. Ekran yapısı
 
----
+### Ana sayfa
 
-## Sayfa Yapısı
+Sayfada şu alanlar olsun:
 
-Website aşağıdaki temel bölümlerden oluşabilir:
+* Üstte başlık: “My Todo List”
+* Altında görev ekleme alanı
 
-### 1. Üst Alan
+  * Text input
+  * “Ekle” butonu
+* Altında filtre alanı
 
-* logo veya site adı
-* istenirse basit bir menü
+  * Tümü
+  * Aktif
+  * Tamamlandı
+* Altında görev listesi
 
-### 2. Hero Bölümü
+### Her görev kartında
 
-* ana başlık
-* kısa açıklama
-* ana buton
+* Görev adı
+* Durum checkbox’ı
+* Düzenle butonu
+* Sil butonu
 
-### 3. Tanıtım Alanı
+## 5. Kullanıcı akışları
 
-* ürün, hizmet, kişi veya marka hakkında kısa bilgi
+### Görev ekleme
 
-### 4. Özellikler / Faydalar
+* Kullanıcı input’a görev adını yazar
+* Ekle butonuna basar
+* Görev listeye eklenir
+* Input temizlenir
 
-* 3 ila 6 maddelik kısa anlatım
+### Görev tamamlama
 
-### 5. İletişim veya Yönlendirme Alanı
+* Kullanıcı checkbox’a tıklar
+* Görev tamamlandı olarak işaretlenir
+* Görsel olarak üstü çizili veya farklı renkte görünür
 
-* iletişim butonu
-* WhatsApp, e-posta veya form bağlantısı
+### Görev düzenleme
 
-### 6. Alt Bilgi
+* Kullanıcı düzenle butonuna tıklar
+* Görev adı düzenlenebilir hale gelir
+* Kaydet ile güncellenir
 
-* telif bilgisi
-* gerekiyorsa ek linkler
+### Görev silme
 
----
+* Kullanıcı sil butonuna tıklar
+* Görev listeden kaldırılır
 
-## Tasarım Yaklaşımı
+### Filtreleme
 
-Tasarım tarafında şu prensipler esas alınmalı:
+* Tümü: tüm görevler görünür
+* Aktif: sadece tamamlanmamış görevler
+* Tamamlandı: sadece tamamlanan görevler
 
-* mümkün olduğunca sade görünüm
-* yeterli boşluk kullanımı
-* okunabilir yazı yapısı
-* az renkli, net görsel hiyerarşi
-* masaüstü ve mobilde tutarlı deneyim
-* dikkat dağıtan gereksiz öğelerden kaçınma
+## 6. Teknik beklenti
 
----
+Yazılımcıya şu beklentiyi iletebilirsin:
 
-## Teknik Yaklaşım
+### Önerilen teknoloji
 
-Teknik tarafta mümkün olduğunca basit ve sürdürülebilir bir yapı tercih edilmeli.
+Basit bir proje olduğu için:
 
-Beklentiler:
+* Frontend: HTML, CSS, JavaScript
+  veya
+* React ile tek sayfa uygulama
 
-* tek sayfa frontend yapı
-* temiz ve anlaşılır kod düzeni
-* kolay deploy edilebilir yapı
-* temel SEO alanlarının eklenmesi
-* performans öncelikli yaklaşım
-* minimum bağımlılık kullanımı
-* gereksiz görsel ve script yükünden kaçınılması
+### Tavsiyem
 
----
+Eğer geliştirici modern frontend biliyorsa:
 
-## İçerik İhtiyacı
+* React kullanılsın
 
-Projeye başlamak için aşağıdaki içeriklerin netleşmesi gerekir:
+Eğer en hızlı ve en ucuz çözüm isteniyorsa:
 
-* site adı
-* ana başlık
-* alt başlık
-* kısa açıklama metni
-* özellik/fayda maddeleri
-* buton metni
-* iletişim bilgileri
-* logo
-* varsa kullanılacak görseller
+* Sade HTML/CSS/JavaScript ile yapılsın
 
-Bu içerikler başta net değilse, ilk aşamada geçici metinlerle ilerlenebilir.
+## 7. Veri modeli
 
----
+Görev objesi şu şekilde olabilir:
 
-## Geliştirme Sırası
+* id
+* title
+* completed
+* createdAt
 
-Projeyi ilerletirken aşağıdaki sıra izlenebilir:
+Örnek:
 
-### 1. İhtiyacın Netleştirilmesi
+* id: unique değer
+* title: görev adı
+* completed: true/false
+* createdAt: oluşturulma tarihi
 
-* sitenin amacı belirlenir
-* hedef kitle netleştirilir
-* hangi mesajın öne çıkacağı kararlaştırılır
+## 8. Tasarım beklentisi
 
-### 2. İçerik Toplama
+* Temiz ve sade görünüm
+* Beyaz arka plan
+* Yumuşak gri tonlar
+* Tamamlanan görevler soluk/çizili görünsün
+* Mobil uyumlu olsun
+* Gereksiz animasyon olmasın
 
-* başlıklar hazırlanır
-* açıklama metinleri yazılır
-* buton metinleri belirlenir
-* iletişim bilgileri toplanır
+## 9. Kabul kriterleri
 
-### 3. Basit Sayfa Kurgusu
+İş bitti denebilmesi için:
 
-* bölümlerin sırası belirlenir
-* masaüstü ve mobil yerleşim düşünülür
-* genel görsel yön netleştirilir
+* Görev eklenebiliyor olmalı
+* Görev düzenlenebiliyor olmalı
+* Görev silinebiliyor olmalı
+* Görev tamamlandı olarak işaretlenebiliyor olmalı
+* Filtreleme çalışıyor olmalı
+* Sayfa yenilendiğinde görevler kaybolmamalı
+* Mobilde düzgün görünmeli
 
-### 4. Arayüzün Hazırlanması
+## 10. İkinci faz için opsiyonel geliştirmeler
 
-* sayfa iskeleti oluşturulur
-* bölümler tek tek eklenir
-* responsive yapı tamamlanır
+İlk versiyona dahil değil ama sonra eklenebilir:
 
-### 5. Son Düzenlemeler
+* Kullanıcı girişi
+* Görevlere tarih ekleme
+* Öncelik seviyesi
+* Kategori ekleme
+* Dark mode
+* Sürükle bırak sıralama
+* Backend ve veritabanı entegrasyonu
+* Çoklu kullanıcı desteği
 
-* metinler gözden geçirilir
-* linkler kontrol edilir
-* mobil görünüm test edilir
-* temel SEO alanları eklenir
-
-### 6. Yayına Hazırlık
-
-* son kontroller yapılır
-* performans gözden geçirilir
-* deploy edilecek hale getirilir
-
----
-
-## Teslimat Beklentisi
-
-Proje sonunda minimum olarak şunlar hazır olmalı:
-
-* çalışan tek sayfa website
-* mobil uyumlu görünüm
-* temel SEO ayarları
-* yayına alınabilir temiz çıktı
-
----
-
-## Notlar
-
-* Bu proje için öncelik hız ve sadelik.
-* Gereksiz özellik eklemekten kaçınılmalı.
-* İlk versiyon mümkün olduğunca küçük kapsamla çıkarılmalı.
-* Sonraki ihtiyaçlar oluşursa ikinci fazda ek geliştirmeler planlanabilir.
+İstersen bunu bir sonraki mesajda sana daha profesyonel bir “yazılımcı iş dokümanı” formatında da hazırlayayım.
