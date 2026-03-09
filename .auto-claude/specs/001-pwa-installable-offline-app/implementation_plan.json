@@ -1,27 +1,27 @@
 {
-  "status": "in_progress",
+  "status": "backlog",
   "workflow_type": "server_first",
   "summary": {
     "total_phases": 1,
     "total_subtasks": 6,
-    "completed_subtasks": 2,
+    "completed_subtasks": 5,
     "failed_subtasks": 0
   },
   "subtasks": [
     {
       "id": "setup",
       "description": "Prepare isolated worktree and runtime",
-      "status": "completed"
+      "status": "pending"
     },
     {
       "id": "create-web-app-manifest-manifest-json",
       "description": "Create a manifest.json file at the project root with all required PWA fields: name ('My Todo List'), short_name, start_url ('./'), display ('standalone'), theme_color, background_color, and an icons array referencing 192×192 and 512×512 PNG/SVG icon files. No external URLs.",
-      "status": "completed"
+      "status": "pending"
     },
     {
       "id": "generate-pwa-icon-files",
       "description": "Create two SVG icon files (icon-192.svg and icon-512.svg) representing the app logo — a simple checklist/checkmark motif using the app's blue (#4a90e2) brand color. Reference both in manifest.json with the correct size and type fields. These must be self-contained with no external resources.",
-      "status": "in_progress"
+      "status": "pending"
     },
     {
       "id": "create-service-worker-sw-js-with-cache-first-off",
@@ -57,22 +57,22 @@
         {
           "id": "generate-pwa-icon-files",
           "description": "Create two SVG icon files (icon-192.svg and icon-512.svg) representing the app logo — a simple checklist/checkmark motif using the app's blue (#4a90e2) brand color. Reference both in manifest.json with the correct size and type fields. These must be self-contained with no external resources.",
-          "status": "in_progress"
+          "status": "completed"
         },
         {
           "id": "create-service-worker-sw-js-with-cache-first-off",
           "description": "Create sw.js that on install caches the app shell: index.html, manifest.json, icon-192.svg, icon-512.svg. On fetch, serve from cache first and fall back to network. Use a versioned cache name (e.g. 'todo-v1') and clean up old caches on activate. Must not request any external URLs — all cached URLs are same-origin only.",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "wire-up-pwa-support-in-index-html",
           "description": "In the <head> of index.html: add <link rel='manifest' href='manifest.json'>, <meta name='theme-color' content='#4a90e2'>, <meta name='apple-mobile-web-app-capable' content='yes'>, <meta name='apple-mobile-web-app-status-bar-style'>, and <link rel='apple-touch-icon' href='icon-192.svg'>. At the end of <body>, add an inline <script> block that registers sw.js via navigator.serviceWorker.register('./sw.js') guarded by feature detection.",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "review",
           "description": "Run AI review and prepare human handoff",
-          "status": "pending"
+          "status": "in_progress"
         }
       ]
     }
@@ -132,8 +132,58 @@
         "index": 2,
         "total": 4
       }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 3/4: Create sw.js that on install caches the app shell: index.html, manifest.json, icon-192.svg, icon-512.svg. On fetch, serve from cache first and fall back to network. Use a versioned cache name (e.g. 'todo-v1') and clean up old caches on activate. Must not request any external URLs — all cached URLs are same-origin only.",
+      "timestamp": "2026-03-09T09:41:10.248Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "create-service-worker-sw-js-with-cache-first-off",
+        "subtaskDescription": "Create sw.js that on install caches the app shell: index.html, manifest.json, icon-192.svg, icon-512.svg. On fetch, serve from cache first and fall back to network. Use a versioned cache name (e.g. 'todo-v1') and clean up old caches on activate. Must not request any external URLs — all cached URLs are same-origin only.",
+        "index": 3,
+        "total": 4
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 4/4: In the <head> of index.html: add <link rel='manifest' href='manifest.json'>, <meta name='theme-color' content='#4a90e2'>, <meta name='apple-mobile-web-app-capable' content='yes'>, <meta name='apple-mobile-web-app-status-bar-style'>, and <link rel='apple-touch-icon' href='icon-192.svg'>. At the end of <body>, add an inline <script> block that registers sw.js via navigator.serviceWorker.register('./sw.js') guarded by feature detection.",
+      "timestamp": "2026-03-09T09:41:33.470Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "wire-up-pwa-support-in-index-html",
+        "subtaskDescription": "In the <head> of index.html: add <link rel='manifest' href='manifest.json'>, <meta name='theme-color' content='#4a90e2'>, <meta name='apple-mobile-web-app-capable' content='yes'>, <meta name='apple-mobile-web-app-status-bar-style'>, and <link rel='apple-touch-icon' href='icon-192.svg'>. At the end of <body>, add an inline <script> block that registers sw.js via navigator.serviceWorker.register('./sw.js') guarded by feature detection.",
+        "index": 4,
+        "total": 4
+      }
+    },
+    {
+      "status": "ai_review",
+      "message": "Automated AI review started.",
+      "timestamp": "2026-03-09T09:42:00.310Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor"
+    },
+    {
+      "status": "human_review",
+      "message": "AI review completed. Awaiting human review and PR decision.",
+      "timestamp": "2026-03-09T09:42:28.174Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "validations": [
+          "manifest.json contains all required fields: name ('My Todo List'), short_name, start_url ('./'), display ('standalone'), theme_color (#4a90e2), background_color, and icons array referencing both SVG icon files",
+          "icon-192.svg and icon-512.svg are self-contained SVGs using #4a90e2 brand color with a checklist/checkmark motif — no external resources",
+          "sw.js uses versioned cache name 'todo-v1', caches all four app shell files on install, serves cache-first with network fallback, cleans up old caches on activate, and restricts fetch handling to same-origin requests only",
+          "index.html <head> includes <link rel='manifest'>, theme-color meta, apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style, and apple-touch-icon link",
+          "Service worker registration script is placed at end of <body> with proper 'serviceWorker' in navigator feature detection guard",
+          "Privacy guarantee preserved: no external URLs in manifest, SW, or icons — fully self-contained"
+        ]
+      }
     }
   ],
   "created_at": "2026-03-08T23:28:06.840Z",
-  "updated_at": "2026-03-09T09:40:43.743Z"
+  "updated_at": "2026-03-09T09:42:28.174Z"
 }

@@ -8,3 +8,8 @@
 [2026-03-09T09:40:44.739Z] building output received (42% estimate).
 [2026-03-09T09:40:44.754Z] Completed subtask 2/3: Add a `clearCompleted()` function that removes all tasks where `completed === true` from the `tasks` array, calls `saveTasks()`, then calls `render()`. Wire the button's click event to this function. Inside `render()`, show or hide the 'Clear completed' button based on whether `tasks.some(t => t.completed)` is true.
 [2026-03-09T09:40:44.755Z] Started subtask 3/3: Before clearing, snapshot the current tasks array. After clearing, show a fixed toast element (e.g. 'Completed tasks cleared. Undo') with an Undo button. Clicking Undo restores the snapshot, saves, and re-renders. The toast auto-dismisses after 4 seconds using setTimeout. Clear any pending timeout if Undo is clicked or a new clear is triggered.
+[2026-03-09T09:41:31.486Z] building output received (59% estimate).
+[2026-03-09T09:41:31.493Z] Completed subtask 3/3: Before clearing, snapshot the current tasks array. After clearing, show a fixed toast element (e.g. 'Completed tasks cleared. Undo') with an Undo button. Clicking Undo restores the snapshot, saves, and re-renders. The toast auto-dismisses after 4 seconds using setTimeout. Clear any pending timeout if Undo is clicked or a new clear is triggered.
+[2026-03-09T09:41:31.494Z] AI review started.
+[2026-03-09T09:41:58.869Z] review output received (92% estimate).
+[2026-03-09T09:41:58.885Z] AI review completed. Awaiting human review.

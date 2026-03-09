@@ -57,12 +57,7 @@
       ]
     }
   ],
-  "qa_signoff": {
-    "status": "approved",
-    "timestamp": "2026-03-09T09:41:02.238Z",
-    "feedback": "",
-    "reviewer": "auto-claude-ai-review"
-  },
+  "qa_signoff": null,
   "status_history": [
     {
       "status": "backlog",
@@ -241,8 +236,22 @@
           "Diff adds only CSS and HTML — no analytics, tracking scripts, external fonts, or CDN resources introduced"
         ]
       }
+    },
+    {
+      "status": "ai_review",
+      "message": "Agent review started.",
+      "timestamp": "2026-03-09T10:17:09.103Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-review"
+    },
+    {
+      "status": "human_review",
+      "message": "Agent review completed. Awaiting human decision or PR action.",
+      "timestamp": "2026-03-09T10:17:09.130Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-review"
     }
   ],
   "created_at": "2026-03-08T23:21:50.464Z",
-  "updated_at": "2026-03-09T09:41:02.238Z"
+  "updated_at": "2026-03-09T10:17:09.130Z"
 }

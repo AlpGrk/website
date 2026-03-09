@@ -173,5 +173,68 @@
       "index": 3,
       "total": 3
     }
+  },
+  {
+    "timestamp": "2026-03-09T09:41:13.832Z",
+    "level": "info",
+    "phase": "building",
+    "event": "stdout",
+    "source": "claude-code",
+    "message": "Done. I added an `else if (e.key === 'Escape')` branch to the `#new-task-input` keydown listener that calls `input.blur()`, returning focus to the page body.\n\n**What changed:** `index.html` lines 517-522 — the existing `keydown` handler on `#new-task-input` now handles both `Enter` (submit) and `Escape` (blur).\n\n**Validation:** The logic is straightforward — `blur()` removes focus from the input without submitting or clearing its value. The existing `Escape` handler on the task edit input (`editInput`) already uses the same pattern (`doCancel` → `render()`), confirming this is the right approach. No conflicts with the global `/` shortcut listener since that checks `document.activeElement` before acting."
+  },
+  {
+    "timestamp": "2026-03-09T09:41:13.843Z",
+    "level": "info",
+    "phase": "building",
+    "event": "subtask_completed",
+    "source": "build-executor",
+    "message": "Completed subtask 3/3: Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+    "data": {
+      "subtaskId": "add-escape-key-handler-on-the-task-input-to-blur",
+      "subtaskDescription": "Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+      "index": 3,
+      "total": 3
+    }
+  },
+  {
+    "timestamp": "2026-03-09T09:41:13.844Z",
+    "level": "info",
+    "phase": "review",
+    "event": "ai_review_started",
+    "source": "build-executor",
+    "message": "Automated AI review started."
+  },
+  {
+    "timestamp": "2026-03-09T09:41:45.287Z",
+    "level": "info",
+    "phase": "review",
+    "event": "stdout",
+    "source": "claude-code-reviewer",
+    "message": "All acceptance criteria are satisfied:\n\n1. **'/' focuses task input** — global `keydown` listener calls `input.focus()` with `e.preventDefault()` ✅\n2. **No trigger when typing in input/textarea/select/contenteditable** — guard checks `tagName === 'INPUT'`, `'TEXTAREA'`, `'SELECT'`, and `isContentEditable` ✅\n3. **Visual hint shown** — `<p class=\"shortcut-hint\">Press <kbd>/</kbd> to add a task</p>` rendered below the form with muted styling ✅\n4. **No mobile shortcut conflicts** — `'/'` is not a reserved mobile browser shortcut ✅\n5. **Escape blurs the input** — `else if (e.key === 'Escape') { input.blur(); }` in the input's existing keydown handler ✅\n\nAll three planned subtasks are implemented correctly.\n\n```json\n{\n  \"status\": \"approved\",\n  \"summary\": \"All three subtasks are implemented correctly. The '/' global shortcut, Escape-to-blur, and visual hint element all satisfy every acceptance criterion from the spec.\",\n  \"issues\": [],\n  \"validations\": [\n    \"Global document keydown listener fires only when '/' is pressed and active element is not INPUT/TEXTAREA/SELECT/contenteditable — prevents interference with task edit inputs\",\n    \"e.preventDefault() stops '/' from being typed into the input on focus\",\n    \"Escape key handler added inside the existing #new-task-input keydown listener, calls input.blur()\",\n    \"Hint element <p class='shortcut-hint'> with styled <kbd>/</kbd> rendered below the add-form with muted color (#aaa) — unobtrusive as specified\",\n    \"No changes to mobile-specific code; '/' key is not a reserved mobile browser shortcut\"\n  ]\n}\n```"
+  },
+  {
+    "timestamp": "2026-03-09T09:41:45.303Z",
+    "level": "info",
+    "phase": "review",
+    "event": "ai_review_completed",
+    "source": "build-executor",
+    "message": "AI review completed. Awaiting human review and PR decision.",
+    "data": {
+      "validations": [
+        "Global document keydown listener fires only when '/' is pressed and active element is not INPUT/TEXTAREA/SELECT/contenteditable — prevents interference with task edit inputs",
+        "e.preventDefault() stops '/' from being typed into the input on focus",
+        "Escape key handler added inside the existing #new-task-input keydown listener, calls input.blur()",
+        "Hint element <p class='shortcut-hint'> with styled <kbd>/</kbd> rendered below the add-form with muted color (#aaa) — unobtrusive as specified",
+        "No changes to mobile-specific code; '/' key is not a reserved mobile browser shortcut"
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-03-09T09:41:45.310Z",
+    "level": "warn",
+    "phase": "review",
+    "event": "commit_failed",
+    "source": "build-executor",
+    "message": "fatal: Unable to create '/opt/projects/website/.git/worktrees/004-global-keyboard-shortcut-to-focus-task-input/index.lock': Permission denied"
   }
 ]
