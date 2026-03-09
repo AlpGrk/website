@@ -213,9 +213,19 @@
 
     .empty-msg {
       text-align: center;
-      color: #aaa;
-      font-size: 0.95rem;
-      padding: 32px 0;
+      padding: 40px 0 32px;
+    }
+
+    .empty-msg__headline {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .empty-msg__sub {
+      font-size: 0.85rem;
+      color: #bbb;
     }
 
     .privacy-badge {
@@ -351,7 +361,7 @@
       <input
         type="text"
         id="new-task-input"
-        placeholder="Add a new task..."
+        placeholder="Type a task and press Enter"
         aria-label="New task title"
       >
       <button class="btn btn-primary" id="add-btn">Add</button>
@@ -366,7 +376,10 @@
 
     <ul class="task-list" id="task-list" role="list"></ul>
     <div id="sr-announce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-    <p class="empty-msg" id="empty-msg" style="display:none;">No tasks here.</p>
+    <div class="empty-msg" id="empty-msg" style="display:none;">
+      <p class="empty-msg__headline">You have no tasks yet</p>
+      <p class="empty-msg__sub">Your tasks stay on your device. Always.</p>
+    </div>
 
     <div id="progress-footer" style="display:none;">
       <span id="progress-text"></span>
@@ -647,13 +660,15 @@
     function render() {
       const list = document.getElementById('task-list');
       const emptyMsg = document.getElementById('empty-msg');
-      const clearCompletedBtn = document.getElementById('clear-completed-btn');
+      const filters = document.querySelector('.filters');
       const visible = filteredTasks();
 
       list.innerHTML = '';
       visible.forEach(task => list.appendChild(renderTaskItem(task)));
 
-      emptyMsg.style.display = visible.length === 0 ? 'block' : 'none';
+      const hasTasks = tasks.length > 0;
+      emptyMsg.style.display = hasTasks ? 'none' : 'block';
+      filters.style.display = hasTasks ? '' : 'none';
       updateProgress();
 
       if (focusedTaskId) {
@@ -738,6 +753,12 @@
     // Init
     loadTasks();
     render();
+
+    // Auto-focus input on desktop only — skip on touch devices to prevent
+    // the virtual keyboard from scrolling the page on first load.
+    if (window.matchMedia('(hover: hover)').matches && navigator.maxTouchPoints === 0) {
+      requestAnimationFrame(() => input.focus());
+    }
   </script>
 </body>
 </html>
