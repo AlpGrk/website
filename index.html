@@ -160,6 +160,12 @@
       gap: 10px;
     }
 
+    .task-item:focus-visible {
+      outline: 2px solid #4a90e2;
+      outline-offset: 2px;
+      border-color: #4a90e2;
+    }
+
     .task-item.completed .task-title {
       text-decoration: line-through;
       color: #aaa;
@@ -282,6 +288,101 @@
       transition: width 0.3s ease;
     }
 
+    /* Keyboard help modal */
+    .kb-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kb-modal-backdrop.open {
+      display: flex;
+    }
+
+    .kb-modal-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      max-width: 420px;
+      width: calc(100% - 32px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+      position: relative;
+    }
+
+    .kb-modal-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .kb-shortcuts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .kb-shortcuts-table tr + tr td {
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .kb-shortcuts-table td {
+      padding: 7px 4px;
+      vertical-align: middle;
+    }
+
+    .kb-shortcuts-table td:first-child {
+      width: 48%;
+      color: #555;
+    }
+
+    .kb-key {
+      display: inline-block;
+      background: #f0f0f0;
+      border: 1px solid #d0d0d0;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #333;
+      margin: 1px;
+    }
+
+    .kb-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      color: #888;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .kb-modal-close:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     @media (max-width: 480px) {
       h1 {
         font-size: 1.4rem;
@@ -343,7 +444,8 @@
       <button class="filter-btn" data-filter="completed">Completed</button>
     </div>
 
-    <ul class="task-list" id="task-list"></ul>
+    <ul class="task-list" id="task-list" role="list"></ul>
+    <div id="sr-announce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     <p class="empty-msg" id="empty-msg" style="display:none;">No tasks here.</p>
 
     <div id="progress-footer" style="display:none;">
@@ -354,10 +456,47 @@
     </div>
   </div>
 
+  <!-- Keyboard shortcuts help modal -->
+  <div class="kb-modal-backdrop" id="kb-help-modal" role="dialog" aria-modal="true" aria-labelledby="kb-modal-title">
+    <div class="kb-modal-card">
+      <button class="kb-modal-close" id="kb-modal-close-btn" aria-label="Close keyboard shortcuts">&times;</button>
+      <h2 id="kb-modal-title">Keyboard Shortcuts</h2>
+      <table class="kb-shortcuts-table">
+        <tbody>
+          <tr>
+            <td><span class="kb-key">Tab</span></td>
+            <td>Cycle focus through tasks</td>
+          </tr>
+          <tr>
+            <td><span class="kb-key">Enter</span> / <span class="kb-key">E</span></td>
+            <td>Open edit mode on focused task</td>
+          </tr>
+          <tr>
+            <td><span class="kb-key">Delete</span> / <span class="kb-key">Backspace</span></td>
+            <td>Delete focused task</td>
+          </tr>
+          <tr>
+            <td><span class="kb-key">/</span> / <span class="kb-key">N</span></td>
+            <td>Focus new task input</td>
+          </tr>
+          <tr>
+            <td><span class="kb-key">Escape</span></td>
+            <td>Return focus to input field</td>
+          </tr>
+          <tr>
+            <td><span class="kb-key">?</span></td>
+            <td>Show / hide this help</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <script>
     const STORAGE_KEY = 'todo_tasks';
     let tasks = [];
     let currentFilter = 'all';
+    let focusedTaskId = null;
 
     function loadTasks() {
       try {
@@ -415,10 +554,47 @@
       return tasks;
     }
 
+    function srAnnounce(msg) {
+      const el = document.getElementById('sr-announce');
+      el.textContent = '';
+      // Force a DOM update so repeated messages are re-announced
+      requestAnimationFrame(() => { el.textContent = msg; });
+    }
+
     function renderTaskItem(task) {
       const li = document.createElement('li');
       li.className = 'task-item' + (task.completed ? ' completed' : '');
       li.dataset.id = task.id;
+      li.role = 'listitem';
+      li.setAttribute('aria-label', task.title + (task.completed ? ', completed' : ', active'));
+      li.tabIndex = 0;
+      li.addEventListener('focus', () => { focusedTaskId = task.id; });
+      li.addEventListener('blur', () => { if (focusedTaskId === task.id) focusedTaskId = null; });
+      li.addEventListener('keydown', e => {
+        if (e.target !== li) return;
+        if (e.key === 'Enter' || e.key === 'e' || e.key === 'E') {
+          e.preventDefault();
+          srAnnounce('Editing task: ' + task.title);
+          enterEditMode(li, task);
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          focusedTaskId = null;
+          document.getElementById('new-task-input').focus();
+        } else if (e.key === 'Delete' || e.key === 'Backspace') {
+          e.preventDefault();
+          if (confirm("Delete task '" + task.title + "'?")) {
+            const nextLi = li.nextElementSibling;
+            const prevLi = li.previousElementSibling;
+            const adjacentId = nextLi ? nextLi.dataset.id : (prevLi ? prevLi.dataset.id : null);
+            focusedTaskId = adjacentId;
+            srAnnounce('Task deleted: ' + task.title);
+            deleteTask(task.id);
+            if (!adjacentId) {
+              document.getElementById('new-task-input').focus();
+            }
+          }
+        }
+      });
 
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
@@ -437,12 +613,12 @@
       const editBtn = document.createElement('button');
       editBtn.className = 'btn btn-secondary btn-sm';
       editBtn.textContent = 'Edit';
-      editBtn.addEventListener('click', () => enterEditMode(li, task));
+      editBtn.addEventListener('click', () => { srAnnounce('Editing task: ' + task.title); enterEditMode(li, task); });
 
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'btn btn-danger btn-sm';
       deleteBtn.textContent = 'Delete';
-      deleteBtn.addEventListener('click', () => deleteTask(task.id));
+      deleteBtn.addEventListener('click', () => { srAnnounce('Task deleted: ' + task.title); deleteTask(task.id); });
 
       actions.appendChild(editBtn);
       actions.appendChild(deleteBtn);
@@ -483,7 +659,7 @@
 
       const doSave = () => {
         const val = editInput.value;
-        if (val.trim()) saveEdit(task.id, val);
+        if (val.trim()) { srAnnounce('Task saved: ' + val.trim()); saveEdit(task.id, val); }
         else render();
       };
 
@@ -549,6 +725,11 @@
 
       emptyMsg.style.display = visible.length === 0 ? 'block' : 'none';
       updateProgress();
+
+      if (focusedTaskId) {
+        const el = list.querySelector('[data-id="' + focusedTaskId + '"]');
+        if (el) el.focus();
+      }
     }
 
     // Add task handlers
@@ -576,6 +757,51 @@
         btn.classList.add('active');
         render();
       });
+    });
+
+    // Keyboard help modal logic
+    const kbModal = document.getElementById('kb-help-modal');
+
+    function openKbModal() {
+      kbModal.classList.add('open');
+      document.getElementById('kb-modal-close-btn').focus();
+    }
+
+    function closeKbModal() {
+      kbModal.classList.remove('open');
+    }
+
+    document.getElementById('kb-modal-close-btn').addEventListener('click', closeKbModal);
+
+    // Close modal when clicking the backdrop (outside the card)
+    kbModal.addEventListener('click', e => {
+      if (e.target === kbModal) closeKbModal();
+    });
+
+    // Global keyboard shortcuts: / or N focuses new task input; ? toggles help modal
+    document.addEventListener('keydown', e => {
+      // Close modal on Escape (when modal is open)
+      if (e.key === 'Escape' && kbModal.classList.contains('open')) {
+        e.preventDefault();
+        closeKbModal();
+        return;
+      }
+
+      const tag = document.activeElement ? document.activeElement.tagName : '';
+      const isEditable = tag === 'INPUT' || tag === 'TEXTAREA' ||
+        document.activeElement.isContentEditable;
+
+      if (!isEditable && (e.key === '/' || e.key === 'n' || e.key === 'N')) {
+        e.preventDefault();
+        document.getElementById('new-task-input').focus();
+      } else if (!isEditable && e.key === '?') {
+        e.preventDefault();
+        if (kbModal.classList.contains('open')) {
+          closeKbModal();
+        } else {
+          openKbModal();
+        }
+      }
     });
 
     // Init
