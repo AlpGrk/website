@@ -208,6 +208,52 @@
       padding: 32px 0;
     }
 
+    .privacy-badge {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px 10px;
+      background: #f0faf2;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 20px;
+      font-size: 0.78rem;
+      color: #2d6a3f;
+      line-height: 1.4;
+    }
+
+    .privacy-badge .privacy-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 8px;
+    }
+
+    .privacy-badge .pill {
+      white-space: nowrap;
+    }
+
+    .privacy-badge .pill + .pill::before {
+      content: '·';
+      margin-right: 8px;
+      opacity: 0.5;
+    }
+
+    .privacy-badge .view-source {
+      color: #2d6a3f;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .privacy-badge .view-source:hover {
+      color: #1a4a2a;
+    }
+
     @media (max-width: 480px) {
       h1 {
         font-size: 1.4rem;
@@ -225,6 +271,16 @@
         flex-direction: column;
         gap: 4px;
       }
+
+      .privacy-badge {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .privacy-badge .privacy-pills {
+        gap: 4px 6px;
+      }
     }
   </style>
 </head>
@@ -232,6 +288,16 @@
   <div class="container">
     <h1>My Todo List</h1>
     <p class="tagline">No account needed. Start adding tasks instantly.</p>
+
+    <div class="privacy-badge">
+      <div class="privacy-pills">
+        <span class="pill">🔒 No cookies</span>
+        <span class="pill">🚫 No tracking</span>
+        <span class="pill">👤 No account required</span>
+      </div>
+      <a class="view-source" id="view-source-link" href="#">View Source</a>
+    </div>
+    <script>document.getElementById('view-source-link').href = 'view-source:' + location.href;</script>
 
     <div class="add-form">
       <input
