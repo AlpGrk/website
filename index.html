@@ -143,6 +143,10 @@
       background: #f0f0f0;
     }
 
+    .clear-completed-btn {
+      margin-left: auto;
+    }
+
     .task-list {
       list-style: none;
       display: flex;
@@ -313,6 +317,7 @@
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="active">Active</button>
       <button class="filter-btn" data-filter="completed">Completed</button>
+      <button id="clear-completed-btn" class="btn btn-danger btn-sm clear-completed-btn" style="display:none" aria-label="Clear all completed tasks">Clear Completed</button>
     </div>
 
     <ul class="task-list" id="task-list"></ul>
@@ -472,15 +477,27 @@
       editInput.select();
     }
 
+    function clearCompleted() {
+      const completedCount = tasks.filter(t => t.completed).length;
+      if (!confirm(`Delete ${completedCount} completed task${completedCount !== 1 ? 's' : ''}?`)) return;
+      tasks = tasks.filter(t => !t.completed);
+      saveTasks();
+      render();
+    }
+
     function render() {
       const list = document.getElementById('task-list');
       const emptyMsg = document.getElementById('empty-msg');
+      const clearCompletedBtn = document.getElementById('clear-completed-btn');
       const visible = filteredTasks();
 
       list.innerHTML = '';
       visible.forEach(task => list.appendChild(renderTaskItem(task)));
 
       emptyMsg.style.display = visible.length === 0 ? 'block' : 'none';
+
+      const completedCount = tasks.filter(t => t.completed).length;
+      clearCompletedBtn.style.display = completedCount > 0 ? '' : 'none';
     }
 
     // Add task handlers
@@ -509,6 +526,9 @@
         render();
       });
     });
+
+    // Clear completed handler
+    document.getElementById('clear-completed-btn').addEventListener('click', clearCompleted);
 
     // Init
     loadTasks();
