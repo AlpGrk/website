@@ -143,6 +143,10 @@
       background: #f0f0f0;
     }
 
+    .clear-completed-btn {
+      margin-left: auto;
+    }
+
     .task-list {
       list-style: none;
       display: flex;
@@ -288,99 +292,10 @@
       transition: width 0.3s ease;
     }
 
-    /* Keyboard help modal */
-    .kb-modal-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .kb-modal-backdrop.open {
+    .export-section {
       display: flex;
-    }
-
-    .kb-modal-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 24px 28px;
-      max-width: 420px;
-      width: calc(100% - 32px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-      position: relative;
-    }
-
-    .kb-modal-card h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: #111;
-    }
-
-    .kb-shortcuts-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-
-    .kb-shortcuts-table tr + tr td {
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .kb-shortcuts-table td {
-      padding: 7px 4px;
-      vertical-align: middle;
-    }
-
-    .kb-shortcuts-table td:first-child {
-      width: 48%;
-      color: #555;
-    }
-
-    .kb-key {
-      display: inline-block;
-      background: #f0f0f0;
-      border: 1px solid #d0d0d0;
-      border-radius: 4px;
-      padding: 1px 7px;
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: #333;
-      margin: 1px;
-    }
-
-    .kb-modal-close {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      line-height: 1;
-      cursor: pointer;
-      color: #888;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .kb-modal-close:hover {
-      background: #f0f0f0;
-      color: #333;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      gap: 8px;
+      margin-top: 12px;
     }
 
     @media (max-width: 480px) {
@@ -409,6 +324,10 @@
 
       .privacy-badge .privacy-pills {
         gap: 4px 6px;
+      }
+
+      .export-section {
+        flex-direction: column;
       }
     }
   </style>
@@ -442,6 +361,7 @@
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="active">Active</button>
       <button class="filter-btn" data-filter="completed">Completed</button>
+      <button id="clear-completed-btn" class="btn btn-danger btn-sm clear-completed-btn" style="display:none" aria-label="Clear all completed tasks">Clear Completed</button>
     </div>
 
     <ul class="task-list" id="task-list" role="list"></ul>
@@ -453,6 +373,11 @@
       <div class="progress-bar-track">
         <div class="progress-bar-fill"></div>
       </div>
+    </div>
+
+    <div id="export-section" class="export-section">
+      <button class="btn btn-secondary" onclick="exportJSON()">Export JSON</button>
+      <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
     </div>
   </div>
 
@@ -722,6 +647,7 @@
     function render() {
       const list = document.getElementById('task-list');
       const emptyMsg = document.getElementById('empty-msg');
+      const clearCompletedBtn = document.getElementById('clear-completed-btn');
       const visible = filteredTasks();
 
       list.innerHTML = '';
@@ -734,6 +660,49 @@
         const el = list.querySelector('[data-id="' + focusedTaskId + '"]');
         if (el) el.focus();
       }
+    }
+
+    function todayDateString() {
+      const d = new Date();
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return yyyy + '-' + mm + '-' + dd;
+    }
+
+    function triggerDownload(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportJSON() {
+      const data = tasks.map(t => ({
+        id: t.id,
+        title: t.title,
+        completed: t.completed,
+        created_at: t.createdAt
+      }));
+      const content = JSON.stringify(data, null, 2);
+      triggerDownload(content, 'my-tasks-' + todayDateString() + '.json', 'application/json');
+    }
+
+    function exportCSV() {
+      function csvField(value) {
+        const str = String(value);
+        if (str.includes('"') || str.includes(',') || str.includes('\n') || str.includes('\r')) {
+          return '"' + str.replace(/"/g, '""') + '"';
+        }
+        return str;
+      }
+      const rows = [['id', 'title', 'completed', 'created_at']];
+      tasks.forEach(t => rows.push([t.id, t.title, t.completed, t.createdAt]));
+      const content = rows.map(row => row.map(csvField).join(',')).join('\r\n');
+      triggerDownload(content, 'my-tasks-' + todayDateString() + '.csv', 'text/csv');
     }
 
     // Add task handlers
@@ -763,52 +732,8 @@
       });
     });
 
-    // Keyboard help modal logic
-    const kbModal = document.getElementById('kb-help-modal');
-
-    function openKbModal() {
-      kbModal.removeAttribute('inert');
-      kbModal.classList.add('open');
-      document.getElementById('kb-modal-close-btn').focus();
-    }
-
-    function closeKbModal() {
-      kbModal.classList.remove('open');
-      kbModal.setAttribute('inert', '');
-    }
-
-    document.getElementById('kb-modal-close-btn').addEventListener('click', closeKbModal);
-
-    // Close modal when clicking the backdrop (outside the card)
-    kbModal.addEventListener('click', e => {
-      if (e.target === kbModal) closeKbModal();
-    });
-
-    // Global keyboard shortcuts: / or N focuses new task input; ? toggles help modal
-    document.addEventListener('keydown', e => {
-      // Close modal on Escape (when modal is open)
-      if (e.key === 'Escape' && kbModal.classList.contains('open')) {
-        e.preventDefault();
-        closeKbModal();
-        return;
-      }
-
-      const tag = document.activeElement ? document.activeElement.tagName : '';
-      const isEditable = tag === 'INPUT' || tag === 'TEXTAREA' ||
-        document.activeElement.isContentEditable;
-
-      if (!isEditable && (e.key === '/' || e.key === 'n' || e.key === 'N')) {
-        e.preventDefault();
-        document.getElementById('new-task-input').focus();
-      } else if (!isEditable && e.key === '?') {
-        e.preventDefault();
-        if (kbModal.classList.contains('open')) {
-          closeKbModal();
-        } else {
-          openKbModal();
-        }
-      }
-    });
+    // Clear completed handler
+    document.getElementById('clear-completed-btn').addEventListener('click', clearCompleted);
 
     // Init
     loadTasks();
