@@ -273,5 +273,13 @@
     "event": "commit_failed",
     "source": "build-executor",
     "message": "fatal: Unable to create '/opt/projects/website/.git/worktrees/001-pwa-installable-offline-app/index.lock': Permission denied"
+  },
+  {
+    "timestamp": "2026-03-09T10:18:10.499Z",
+    "level": "info",
+    "phase": "review",
+    "event": "status_update",
+    "source": "auto-claude-orchestrator",
+    "message": "Status updated to discarded"
   }
 ]

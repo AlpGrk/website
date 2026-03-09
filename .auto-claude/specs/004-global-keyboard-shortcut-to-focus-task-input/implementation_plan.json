@@ -1,5 +1,5 @@
 {
-  "status": "backlog",
+  "status": "discarded",
   "workflow_type": "server_first",
   "summary": {
     "total_phases": 1,
@@ -11,27 +11,27 @@
     {
       "id": "setup",
       "description": "Prepare isolated worktree and runtime",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "add-shortcut-hint-element-below-the-task-input",
       "description": "Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "implement-global-keydown-listener-to-focus-input",
       "description": "Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "add-escape-key-handler-on-the-task-input-to-blur",
       "description": "Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "review",
       "description": "Run AI review and prepare human handoff",
-      "status": "pending"
+      "status": "in_progress"
     }
   ],
   "phases": [
@@ -67,7 +67,11 @@
       ]
     }
   ],
-  "qa_signoff": null,
+  "qa_signoff": {
+    "status": "discarded",
+    "timestamp": "2026-03-09T10:18:05.143Z",
+    "reviewer": "server-orchestrator"
+  },
   "status_history": [
     {
       "status": "backlog",
@@ -158,8 +162,15 @@
           "No changes to mobile-specific code; '/' key is not a reserved mobile browser shortcut"
         ]
       }
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:18:05.144Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
     }
   ],
   "created_at": "2026-03-08T23:25:52.941Z",
-  "updated_at": "2026-03-09T09:41:45.302Z"
+  "updated_at": "2026-03-09T10:18:05.144Z"
 }

@@ -1,5 +1,5 @@
 {
-  "status": "backlog",
+  "status": "discarded",
   "workflow_type": "server_first",
   "summary": {
     "total_phases": 1,
@@ -11,32 +11,32 @@
     {
       "id": "setup",
       "description": "Prepare isolated worktree and runtime",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "create-web-app-manifest-manifest-json",
       "description": "Create a manifest.json file at the project root with all required PWA fields: name ('My Todo List'), short_name, start_url ('./'), display ('standalone'), theme_color, background_color, and an icons array referencing 192×192 and 512×512 PNG/SVG icon files. No external URLs.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "generate-pwa-icon-files",
       "description": "Create two SVG icon files (icon-192.svg and icon-512.svg) representing the app logo — a simple checklist/checkmark motif using the app's blue (#4a90e2) brand color. Reference both in manifest.json with the correct size and type fields. These must be self-contained with no external resources.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "create-service-worker-sw-js-with-cache-first-off",
       "description": "Create sw.js that on install caches the app shell: index.html, manifest.json, icon-192.svg, icon-512.svg. On fetch, serve from cache first and fall back to network. Use a versioned cache name (e.g. 'todo-v1') and clean up old caches on activate. Must not request any external URLs — all cached URLs are same-origin only.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "wire-up-pwa-support-in-index-html",
       "description": "In the <head> of index.html: add <link rel='manifest' href='manifest.json'>, <meta name='theme-color' content='#4a90e2'>, <meta name='apple-mobile-web-app-capable' content='yes'>, <meta name='apple-mobile-web-app-status-bar-style'>, and <link rel='apple-touch-icon' href='icon-192.svg'>. At the end of <body>, add an inline <script> block that registers sw.js via navigator.serviceWorker.register('./sw.js') guarded by feature detection.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "review",
       "description": "Run AI review and prepare human handoff",
-      "status": "pending"
+      "status": "in_progress"
     }
   ],
   "phases": [
@@ -77,7 +77,11 @@
       ]
     }
   ],
-  "qa_signoff": null,
+  "qa_signoff": {
+    "status": "discarded",
+    "timestamp": "2026-03-09T10:18:10.494Z",
+    "reviewer": "server-orchestrator"
+  },
   "status_history": [
     {
       "status": "backlog",
@@ -182,8 +186,15 @@
           "Privacy guarantee preserved: no external URLs in manifest, SW, or icons — fully self-contained"
         ]
       }
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:18:10.495Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
     }
   ],
   "created_at": "2026-03-08T23:28:06.840Z",
-  "updated_at": "2026-03-09T09:42:28.174Z"
+  "updated_at": "2026-03-09T10:18:10.495Z"
 }

@@ -1,5 +1,5 @@
 {
-  "status": "backlog",
+  "status": "discarded",
   "workflow_type": "server_first",
   "summary": {
     "total_phases": 1,
@@ -11,27 +11,27 @@
     {
       "id": "setup",
       "description": "Prepare isolated worktree and runtime",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "add-clear-completed-button-to-html-and-css",
       "description": "Add a 'Clear completed' button element below the filters row in the HTML. Style it as a small danger-style button that is hidden by default (display:none) and only shown when completed tasks exist. Add a `.clear-completed-btn` CSS rule and a `.toast` CSS rule for the undo notification that will appear bottom-center.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "implement-clearcompleted-and-wire-button-visibil",
       "description": "Add a `clearCompleted()` function that removes all tasks where `completed === true` from the `tasks` array, calls `saveTasks()`, then calls `render()`. Wire the button's click event to this function. Inside `render()`, show or hide the 'Clear completed' button based on whether `tasks.some(t => t.completed)` is true.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "implement-undo-toast-with-auto-dismiss",
       "description": "Before clearing, snapshot the current tasks array. After clearing, show a fixed toast element (e.g. 'Completed tasks cleared. Undo') with an Undo button. Clicking Undo restores the snapshot, saves, and re-renders. The toast auto-dismisses after 4 seconds using setTimeout. Clear any pending timeout if Undo is clicked or a new clear is triggered.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "review",
       "description": "Run AI review and prepare human handoff",
-      "status": "pending"
+      "status": "in_progress"
     }
   ],
   "phases": [
@@ -67,7 +67,11 @@
       ]
     }
   ],
-  "qa_signoff": null,
+  "qa_signoff": {
+    "status": "discarded",
+    "timestamp": "2026-03-09T10:17:59.198Z",
+    "reviewer": "server-orchestrator"
+  },
   "status_history": [
     {
       "status": "backlog",
@@ -161,8 +165,15 @@
           "Button placed correctly below filters row; styled as btn-danger btn-sm as specified"
         ]
       }
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:17:59.198Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
     }
   ],
   "created_at": "2026-03-08T23:22:28.372Z",
-  "updated_at": "2026-03-09T09:41:58.884Z"
+  "updated_at": "2026-03-09T10:17:59.198Z"
 }

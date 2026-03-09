@@ -239,5 +239,13 @@
     "event": "commit_failed",
     "source": "build-executor",
     "message": "fatal: Unable to create '/opt/projects/website/.git/worktrees/003-bulk-actions-clear-completed-tasks/index.lock': Permission denied"
+  },
+  {
+    "timestamp": "2026-03-09T10:17:59.200Z",
+    "level": "info",
+    "phase": "review",
+    "event": "status_update",
+    "source": "auto-claude-orchestrator",
+    "message": "Status updated to discarded"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "status": "backlog",
+  "status": "discarded",
   "workflow_type": "server_first",
   "summary": {
     "total_phases": 1,
@@ -11,27 +11,27 @@
     {
       "id": "setup",
       "description": "Prepare isolated worktree and runtime",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "add-summary-bar-html-element-and-css",
       "description": "Insert a <div id=\"summary-bar\"> element between the task list and the bottom of .container. Add CSS styles: muted text color (#888), small font size (~0.85rem), centered, padding above, and ensure it remains visible on mobile viewports without scrolling.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "implement-filter-aware-rendersummary-function",
       "description": "Add a renderSummary() function that computes counts from the global tasks array (not filteredTasks): activeCount = tasks where !completed, completedCount = tasks where completed. Output text based on currentFilter: 'all' → 'X remaining · Y completed'; 'active' → 'X active tasks'; 'completed' → 'Y completed tasks'. When tasks.length === 0, show 'No tasks yet — add one above!' instead of counts.",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "wire-rendersummary-into-render-and-update-empty-",
       "description": "Call renderSummary() at the end of the render() function so the bar updates on every state change. Update the #empty-msg text to be context-aware: when tasks.length === 0 show 'No tasks yet — add one above!'; when filtered view is empty but tasks exist show 'No tasks here.' (existing behavior).",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "review",
       "description": "Run AI review and prepare human handoff",
-      "status": "pending"
+      "status": "in_progress"
     }
   ],
   "phases": [
@@ -67,7 +67,11 @@
       ]
     }
   ],
-  "qa_signoff": null,
+  "qa_signoff": {
+    "status": "discarded",
+    "timestamp": "2026-03-09T10:18:20.469Z",
+    "reviewer": "server-orchestrator"
+  },
   "status_history": [
     {
       "status": "backlog",
@@ -160,8 +164,29 @@
           "Summary bar shows empty string when tasks.length === 0, avoiding duplicate empty state messaging"
         ]
       }
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:17:40.316Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:17:50.358Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
+    },
+    {
+      "status": "discarded",
+      "message": "Orchestrator set status to discarded.",
+      "timestamp": "2026-03-09T10:18:20.470Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-orchestrator"
     }
   ],
   "created_at": "2026-03-08T23:22:27.168Z",
-  "updated_at": "2026-03-09T09:42:00.704Z"
+  "updated_at": "2026-03-09T10:18:20.470Z"
 }
