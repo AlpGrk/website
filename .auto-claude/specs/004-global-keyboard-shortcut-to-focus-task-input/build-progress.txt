@@ -1,0 +1,10 @@
+[2026-03-09T09:39:21.140Z] Build orchestration started.
+[2026-03-09T09:39:45.435Z] planning output received (10% estimate).
+[2026-03-09T09:39:45.444Z] Planning completed. Implementation subtasks generated.
+[2026-03-09T09:39:45.445Z] Started subtask 1/3: Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.
+[2026-03-09T09:40:26.887Z] building output received (23% estimate).
+[2026-03-09T09:40:26.901Z] Completed subtask 1/3: Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.
+[2026-03-09T09:40:26.902Z] Started subtask 2/3: Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).
+[2026-03-09T09:40:51.610Z] building output received (41% estimate).
+[2026-03-09T09:40:51.623Z] Completed subtask 2/3: Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).
+[2026-03-09T09:40:51.624Z] Started subtask 3/3: Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.

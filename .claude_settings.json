@@ -1,0 +1,29 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Write(./**)",
+      "Edit(./**)",
+      "Glob(./**)",
+      "Grep(./**)",
+      "Read(/opt/projects/website/**)",
+      "Write(/opt/projects/website/**)",
+      "Edit(/opt/projects/website/**)",
+      "Glob(/opt/projects/website/**)",
+      "Grep(/opt/projects/website/**)",
+      "Read(/opt/projects/website/.auto-claude/roadmap/**)",
+      "Write(/opt/projects/website/.auto-claude/roadmap/**)",
+      "Edit(/opt/projects/website/.auto-claude/roadmap/**)",
+      "Bash(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "mcp__context7__resolve-library-id(*)",
+      "mcp__context7__query-docs(*)"
+    ]
+  }
+}

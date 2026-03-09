@@ -1,0 +1,248 @@
+{
+  "status": "human_review",
+  "workflow_type": "server_first",
+  "summary": {
+    "total_phases": 1,
+    "total_subtasks": 4,
+    "completed_subtasks": 3,
+    "failed_subtasks": 0
+  },
+  "subtasks": [
+    {
+      "id": "setup",
+      "description": "Prepare isolated worktree and runtime",
+      "status": "completed"
+    },
+    {
+      "id": "add-privacy-badge-css-styles",
+      "description": "Inside the existing <style> block, add rules for .privacy-badge (light-green tint background, border, flex layout, small font), .privacy-pills (flex-wrap row for the three pills), .pill (dot separator via ::before pseudo-element on .pill + .pill), and .view-source (underlined, bold, matching green color). Include a @media (max-width: 480px) block that switches .privacy-badge to column layout and tightens pill gap for narrow viewports.",
+      "status": "completed"
+    },
+    {
+      "id": "add-privacy-badge-html-markup-with-view-source-l",
+      "description": "Insert a <div class=\"privacy-badge\"> immediately after the .tagline <p> element. It must contain a <div class=\"privacy-pills\"> with three <span class=\"pill\"> tokens ('🔒 No cookies', '🚫 No tracking', '👤 No account required') and an <a class=\"view-source\" id=\"view-source-link\" href=\"#\">View Source</a> anchor. Follow it with a one-line inline <script> that sets document.getElementById('view-source-link').href = 'view-source:' + location.href so users can inspect the full source in-browser.",
+      "status": "completed"
+    },
+    {
+      "id": "review",
+      "description": "Run AI review and prepare human handoff",
+      "status": "in_progress"
+    }
+  ],
+  "phases": [
+    {
+      "id": "implementation",
+      "name": "Implementation",
+      "subtasks": [
+        {
+          "id": "setup",
+          "description": "Prepare isolated worktree and runtime",
+          "status": "completed"
+        },
+        {
+          "id": "add-privacy-badge-css-styles",
+          "description": "Inside the existing <style> block, add rules for .privacy-badge (light-green tint background, border, flex layout, small font), .privacy-pills (flex-wrap row for the three pills), .pill (dot separator via ::before pseudo-element on .pill + .pill), and .view-source (underlined, bold, matching green color). Include a @media (max-width: 480px) block that switches .privacy-badge to column layout and tightens pill gap for narrow viewports.",
+          "status": "completed"
+        },
+        {
+          "id": "add-privacy-badge-html-markup-with-view-source-l",
+          "description": "Insert a <div class=\"privacy-badge\"> immediately after the .tagline <p> element. It must contain a <div class=\"privacy-pills\"> with three <span class=\"pill\"> tokens ('🔒 No cookies', '🚫 No tracking', '👤 No account required') and an <a class=\"view-source\" id=\"view-source-link\" href=\"#\">View Source</a> anchor. Follow it with a one-line inline <script> that sets document.getElementById('view-source-link').href = 'view-source:' + location.href so users can inspect the full source in-browser.",
+          "status": "completed"
+        },
+        {
+          "id": "review",
+          "description": "Run AI review and prepare human handoff",
+          "status": "in_progress"
+        }
+      ]
+    }
+  ],
+  "qa_signoff": {
+    "status": "approved",
+    "timestamp": "2026-03-09T09:41:02.238Z",
+    "feedback": "",
+    "reviewer": "auto-claude-ai-review"
+  },
+  "status_history": [
+    {
+      "status": "backlog",
+      "message": "Spec created from roadmap feature.",
+      "timestamp": "2026-03-08T23:21:50.464Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-create-spec"
+    },
+    {
+      "status": "planning",
+      "message": "Build orchestration started and worktree prepared.",
+      "timestamp": "2026-03-09T09:01:43.735Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "project": "website",
+        "worktreePath": "/opt/projects/website/.auto-claude/worktrees/tasks/001-privacy-badge-auditable-zero-tracking-guarantee"
+      }
+    },
+    {
+      "status": "planning",
+      "message": "Planning completed and implementation subtasks were generated.",
+      "timestamp": "2026-03-09T09:02:11.744Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "totalSubtasks": 4
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 1/2: Add styles for a .privacy-badge component inside the existing <style> block. Style it as a small, non-intrusive banner below the tagline: subtle background (e.g. light green tint), small font, inline icon characters (no external icon fonts), flex layout for the three claim pills (no cookies · no tracking · no account), and a 'View Source' anchor. Include a @media (max-width: 480px) rule to stack or wrap the pills on narrow viewports.",
+      "timestamp": "2026-03-09T09:02:11.745Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-privacy-badge-css-styles",
+        "subtaskDescription": "Add styles for a .privacy-badge component inside the existing <style> block. Style it as a small, non-intrusive banner below the tagline: subtle background (e.g. light green tint), small font, inline icon characters (no external icon fonts), flex layout for the three claim pills (no cookies · no tracking · no account), and a 'View Source' anchor. Include a @media (max-width: 480px) rule to stack or wrap the pills on narrow viewports.",
+        "index": 1,
+        "total": 2
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 2/2: Insert a <div class=\"privacy-badge\"> element in the .container, immediately after the .tagline paragraph. The badge must contain three visible claim tokens — '🔒 No cookies', '🚫 No tracking', '👤 No account required' — and a 'View Source' link using the view-source: protocol (view-source: + location.href rendered via a small inline script attribute or a static relative path) so users can inspect the full HTML in-browser and verify the zero-external-requests guarantee themselves.",
+      "timestamp": "2026-03-09T09:02:46.169Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-privacy-badge-html-markup",
+        "subtaskDescription": "Insert a <div class=\"privacy-badge\"> element in the .container, immediately after the .tagline paragraph. The badge must contain three visible claim tokens — '🔒 No cookies', '🚫 No tracking', '👤 No account required' — and a 'View Source' link using the view-source: protocol (view-source: + location.href rendered via a small inline script attribute or a static relative path) so users can inspect the full HTML in-browser and verify the zero-external-requests guarantee themselves.",
+        "index": 2,
+        "total": 2
+      }
+    },
+    {
+      "status": "ai_review",
+      "message": "Automated AI review started.",
+      "timestamp": "2026-03-09T09:03:18.025Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor"
+    },
+    {
+      "status": "human_review",
+      "message": "AI review completed. Awaiting human review and PR decision.",
+      "timestamp": "2026-03-09T09:03:54.348Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "validations": [
+          "Privacy badge is rendered directly in the HTML with no user interaction required",
+          "Three claim pills present: '🔒 No cookies', '🚫 No tracking', '👤 No account required'",
+          "View Source link uses view-source: protocol set via inline script (document.getElementById('view-source-link').href = 'view-source:' + location.href)",
+          "No external scripts, CDN fonts, analytics, or tracking resources were introduced",
+          "Responsive CSS: flex-wrap on pills and a @media (max-width: 480px) block stacks the badge to column layout on narrow viewports",
+          "Badge uses subtle light-green tint (#f0faf2 background, #c3e6cb border) — non-intrusive styling consistent with the spec",
+          "Badge is positioned immediately after the .tagline paragraph as specified in the subtasks"
+        ]
+      }
+    },
+    {
+      "status": "pr_open",
+      "message": "PR #6 opened for review.",
+      "timestamp": "2026-03-09T09:14:38.330Z",
+      "actor": "cloudone-agent",
+      "source": "worktree-pr",
+      "data": {
+        "prNumber": 6,
+        "prUrl": "https://github.com/AlpGrk/website/pull/6",
+        "branch": "auto-claude/001-privacy-badge-auditable-zero-tracking-guarantee",
+        "baseBranch": "main"
+      }
+    },
+    {
+      "status": "merged",
+      "message": "PR #6 was merged on GitHub.",
+      "timestamp": "2026-03-09T09:14:53.122Z",
+      "actor": "cloudone-agent",
+      "source": "worktree-pr",
+      "data": {
+        "prNumber": 6,
+        "prUrl": "https://github.com/AlpGrk/website/pull/6",
+        "branch": "auto-claude/001-privacy-badge-auditable-zero-tracking-guarantee",
+        "mergedAt": "2026-03-09T09:14:51Z"
+      }
+    },
+    {
+      "status": "planning",
+      "message": "Build orchestration started and worktree prepared.",
+      "timestamp": "2026-03-09T09:37:52.460Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "project": "website",
+        "worktreePath": "/opt/projects/website/.auto-claude/worktrees/tasks/001-privacy-badge-auditable-zero-tracking-guarantee"
+      }
+    },
+    {
+      "status": "planning",
+      "message": "Planning completed and implementation subtasks were generated.",
+      "timestamp": "2026-03-09T09:38:23.115Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "totalSubtasks": 4
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 1/2: Inside the existing <style> block, add rules for .privacy-badge (light-green tint background, border, flex layout, small font), .privacy-pills (flex-wrap row for the three pills), .pill (dot separator via ::before pseudo-element on .pill + .pill), and .view-source (underlined, bold, matching green color). Include a @media (max-width: 480px) block that switches .privacy-badge to column layout and tightens pill gap for narrow viewports.",
+      "timestamp": "2026-03-09T09:38:23.116Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-privacy-badge-css-styles",
+        "subtaskDescription": "Inside the existing <style> block, add rules for .privacy-badge (light-green tint background, border, flex layout, small font), .privacy-pills (flex-wrap row for the three pills), .pill (dot separator via ::before pseudo-element on .pill + .pill), and .view-source (underlined, bold, matching green color). Include a @media (max-width: 480px) block that switches .privacy-badge to column layout and tightens pill gap for narrow viewports.",
+        "index": 1,
+        "total": 2
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 2/2: Insert a <div class=\"privacy-badge\"> immediately after the .tagline <p> element. It must contain a <div class=\"privacy-pills\"> with three <span class=\"pill\"> tokens ('🔒 No cookies', '🚫 No tracking', '👤 No account required') and an <a class=\"view-source\" id=\"view-source-link\" href=\"#\">View Source</a> anchor. Follow it with a one-line inline <script> that sets document.getElementById('view-source-link').href = 'view-source:' + location.href so users can inspect the full source in-browser.",
+      "timestamp": "2026-03-09T09:39:19.208Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-privacy-badge-html-markup-with-view-source-l",
+        "subtaskDescription": "Insert a <div class=\"privacy-badge\"> immediately after the .tagline <p> element. It must contain a <div class=\"privacy-pills\"> with three <span class=\"pill\"> tokens ('🔒 No cookies', '🚫 No tracking', '👤 No account required') and an <a class=\"view-source\" id=\"view-source-link\" href=\"#\">View Source</a> anchor. Follow it with a one-line inline <script> that sets document.getElementById('view-source-link').href = 'view-source:' + location.href so users can inspect the full source in-browser.",
+        "index": 2,
+        "total": 2
+      }
+    },
+    {
+      "status": "ai_review",
+      "message": "Automated AI review started.",
+      "timestamp": "2026-03-09T09:40:00.170Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor"
+    },
+    {
+      "status": "human_review",
+      "message": "AI review completed. Awaiting human review and PR decision.",
+      "timestamp": "2026-03-09T09:41:02.238Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "validations": [
+          "Badge div placed immediately after .tagline <p> element, visible on page load without interaction",
+          "Three pill spans present: '🔒 No cookies', '🚫 No tracking', '👤 No account required' — covering cookies, tracking/external requests, and account requirement",
+          "View Source anchor (#view-source-link) present with inline script setting href to 'view-source:' + location.href",
+          ".privacy-badge uses light-green tint background (#f0faf2), green border (#c3e6cb), flex layout, and small font (0.78rem)",
+          ".pill + .pill::before dot-separator pseudo-element implemented correctly",
+          ".view-source is underlined, font-weight: 600, and green (#2d6a3f) matching badge palette",
+          "@media (max-width: 480px) switches .privacy-badge to flex-direction: column and tightens .privacy-pills gap to 4px 6px",
+          "Diff adds only CSS and HTML — no analytics, tracking scripts, external fonts, or CDN resources introduced"
+        ]
+      }
+    }
+  ],
+  "created_at": "2026-03-08T23:21:50.464Z",
+  "updated_at": "2026-03-09T09:41:02.238Z"
+}

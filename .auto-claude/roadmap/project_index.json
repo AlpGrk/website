@@ -1,0 +1,8 @@
+{
+  "project_root": "/opt/projects/website",
+  "project_type": "single",
+  "services": {},
+  "infrastructure": {},
+  "conventions": {},
+  "dependency_locations": []
+}

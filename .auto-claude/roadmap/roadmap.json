@@ -1,0 +1,552 @@
+{
+  "id": "roadmap-1773007469483",
+  "project_name": "My Todo List",
+  "version": "1.0",
+  "vision": "A zero-tracking, no-account-needed todo app that lets you start managing tasks instantly in your browser.",
+  "target_audience": {
+    "primary": "Privacy-conscious individual who wants a fast, no-signup task manager they can use immediately in the browser",
+    "secondary": [
+      "Minimalist productivity seekers who distrust data-hungry apps",
+      "Casual users needing a quick personal to-do list without installing anything",
+      "Developers or technical users who appreciate a self-contained, zero-dependency tool"
+    ]
+  },
+  "generated_at": "2026-03-08T22:04:29.483Z",
+  "updated_at": "2026-03-08T22:04:29.483Z",
+  "phases": [
+    {
+      "id": "phase-1",
+      "name": "Foundation & Quick Wins",
+      "description": "Reinforce the core differentiators (privacy, zero-friction, offline-readiness) with high-impact, low-complexity improvements that make the existing MVP shine and close the most critical UX gaps.",
+      "order": 1,
+      "status": "planned",
+      "features": [
+        "feature-1",
+        "feature-2",
+        "feature-3",
+        "feature-4",
+        "feature-5"
+      ]
+    },
+    {
+      "id": "phase-2",
+      "name": "Enhancement & Differentiation",
+      "description": "Add the most-requested features that compete directly with pain points in Todoist, Google Tasks, and TickTick — without adding bloat. Improve accessibility, usability, and data ownership.",
+      "order": 2,
+      "status": "planned",
+      "features": [
+        "feature-6",
+        "feature-7",
+        "feature-8",
+        "feature-9",
+        "feature-10",
+        "feature-11"
+      ]
+    },
+    {
+      "id": "phase-3",
+      "name": "Scale & Power User Features",
+      "description": "Extend the app for users with more complex personal workflows — tags, subtasks, recurring tasks — while maintaining the zero-tracking and no-signup philosophy.",
+      "order": 3,
+      "status": "planned",
+      "features": [
+        "feature-12",
+        "feature-13",
+        "feature-14",
+        "feature-15"
+      ]
+    },
+    {
+      "id": "phase-4",
+      "name": "Future Vision",
+      "description": "Long-term, exploratory features that extend the app's reach without compromising its privacy-first architecture. Requires significant architectural investment.",
+      "order": 4,
+      "status": "planned",
+      "features": [
+        "feature-16",
+        "feature-17",
+        "feature-18",
+        "feature-19"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": "feature-1",
+      "title": "Privacy Badge & Auditable Zero-Tracking Guarantee",
+      "description": "Add a visible, in-app privacy badge or banner that prominently states the zero-tracking guarantee — no cookies, no analytics, no external requests. Link directly to the source code so users can verify the claim themselves. This transforms the app's strongest differentiator from a hidden code comment into a visible trust signal.",
+      "rationale": "Every major competitor (Todoist, Microsoft To Do, Google Tasks, TickTick, Any.do) shares user data with analytics platforms and third parties. No competitor can offer an auditable, in-browser, no-external-requests privacy guarantee. Making this visible captures the growing segment of privacy-aware users and directly addresses the market gap identified across all 5 competitors.",
+      "priority": "must",
+      "complexity": "low",
+      "impact": "high",
+      "phase_id": "phase-1",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "A privacy badge or notice is visible on the main page without requiring user interaction",
+        "The badge clearly communicates zero external requests, zero cookies, zero account required",
+        "A link to the source code (or 'View Source' instruction) is available from the badge",
+        "No third-party analytics, tracking scripts, or external fonts are added in this feature",
+        "The badge is legible and non-intrusive on both mobile (375px+) and desktop viewports"
+      ],
+      "user_stories": [
+        "As a privacy-conscious user, I want to see a clear, verifiable privacy guarantee on the page so that I can trust the app before adding my personal tasks",
+        "As a developer, I want a link to the source code so that I can audit the zero-tracking claim myself"
+      ],
+      "linked_spec_id": "001-privacy-badge-auditable-zero-tracking-guarantee"
+    },
+    {
+      "id": "feature-2",
+      "title": "Task Count & Progress Summary Bar",
+      "description": "Display a real-time summary at the bottom or top of the task list showing the count of active tasks remaining and completed tasks (e.g., '3 tasks remaining · 5 completed'). Update instantly as tasks are added, completed, or deleted. This closes an identified UX gap and provides a motivating at-a-glance progress indicator.",
+      "rationale": "The current app has no progress feedback, which reduces the motivational loop of task completion. This is a low-complexity, high-satisfaction improvement that makes the app feel more complete and polished — matching the baseline UX of every major competitor while adding zero complexity for the user.",
+      "priority": "must",
+      "complexity": "low",
+      "impact": "medium",
+      "phase_id": "phase-1",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "The task count updates in real-time when tasks are added, completed, or deleted",
+        "Both active (incomplete) and completed task counts are visible",
+        "The count correctly reflects the current filter state (e.g., 'Active' filter shows only active count)",
+        "The summary is visible without scrolling on mobile viewports",
+        "Zero tasks shows a meaningful empty state (e.g., 'No tasks yet — add one above!')"
+      ],
+      "user_stories": [
+        "As a daily user, I want to see how many tasks I have left at a glance so that I feel motivated to complete them",
+        "As a productivity-focused user, I want a progress indicator so that I can get a sense of accomplishment when I clear tasks"
+      ],
+      "linked_spec_id": "002-task-count-progress-summary-bar"
+    },
+    {
+      "id": "feature-3",
+      "title": "Bulk Actions: Clear All Completed Tasks",
+      "description": "Add a 'Clear completed' button that removes all completed tasks in a single click. The button should only appear when at least one completed task exists. This closes a known UX gap and directly addresses a pain point observed in Any.do where completed tasks cannot be permanently deleted.",
+      "rationale": "Users who complete multiple tasks accumulate visual clutter. Any.do users specifically complain that completed tasks cannot be permanently deleted — a frustration My Todo List can solve trivially. This is a low-effort, high-satisfaction feature that reinforces data ownership (users control what persists).",
+      "priority": "must",
+      "complexity": "low",
+      "impact": "medium",
+      "phase_id": "phase-1",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "'Clear completed' button is visible only when at least one completed task exists",
+        "Clicking the button permanently removes all completed tasks from LocalStorage",
+        "The task list updates immediately after bulk deletion without a page refresh",
+        "A brief confirmation or undo mechanism is shown to prevent accidental bulk deletion",
+        "The active task count updates correctly after clearing completed tasks"
+      ],
+      "user_stories": [
+        "As a daily user, I want to clear all completed tasks at once so that I can start each day with a clean, uncluttered list",
+        "As a privacy-conscious user, I want to permanently delete completed tasks so that my task history is not retained indefinitely"
+      ],
+      "linked_spec_id": "003-bulk-actions-clear-completed-tasks"
+    },
+    {
+      "id": "feature-4",
+      "title": "Global Keyboard Shortcut to Focus Task Input",
+      "description": "Implement a keyboard shortcut (e.g., pressing '/' or 'n') from anywhere on the page to instantly focus the task input field, ready for typing. Show a keyboard shortcut hint near the input placeholder. This allows power users to add tasks without reaching for the mouse.",
+      "rationale": "The current app lacks a way to focus the input from anywhere on the page, requiring mouse interaction. Technical users and keyboard-first users (a key secondary persona) expect this behavior. It also supports the core success metric: adding a first task in under 10 seconds from page load.",
+      "priority": "must",
+      "complexity": "low",
+      "impact": "medium",
+      "phase_id": "phase-1",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Pressing '/' or a configurable key from anywhere on the page focuses the task input field",
+        "The shortcut does not trigger when a user is already typing in an input or contenteditable element",
+        "A visual hint (e.g., 'Press / to add a task') is shown in the input placeholder or below the field",
+        "The shortcut works on both desktop and does not conflict with mobile browser shortcuts",
+        "Pressing Escape while in the input blurs it and returns focus to the page"
+      ],
+      "user_stories": [
+        "As a keyboard-first user, I want a keyboard shortcut to focus the task input so that I can add tasks without using the mouse",
+        "As a power user, I want to quickly jump to task entry from anywhere on the page so that adding tasks feels instant and frictionless"
+      ],
+      "linked_spec_id": "004-global-keyboard-shortcut-to-focus-task-input"
+    },
+    {
+      "id": "feature-5",
+      "title": "Progressive Web App (PWA) — Installable Offline App",
+      "description": "Add a Web App Manifest and a Service Worker to make the app installable as a PWA on mobile and desktop. Users can add the app to their home screen or desktop and use it fully offline — even without loading the original URL. The Service Worker caches the single HTML file for instant offline access.",
+      "rationale": "All major competitors (Todoist, Microsoft To Do, Google Tasks, TickTick) require internet connectivity to function or have sync failures when offline. Turning My Todo List into an installable PWA is a unique capability among privacy-focused lightweight alternatives (market gap-3). It reinforces the 'no internet dependency' differentiator and gives the app a native-like feel without an app store.",
+      "priority": "must",
+      "complexity": "medium",
+      "impact": "high",
+      "phase_id": "phase-1",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "A valid Web App Manifest is served with the page (name, icons, start_url, display: standalone)",
+        "A Service Worker caches the app shell (HTML, CSS, JS) for full offline access",
+        "The app can be installed via 'Add to Home Screen' on iOS Safari, Android Chrome, and desktop Chrome/Edge",
+        "Installed app opens in standalone mode (no browser chrome) on all platforms",
+        "All existing CRUD operations work identically when the app is used offline after installation",
+        "No external resources are requested by the Service Worker — privacy guarantee is preserved"
+      ],
+      "user_stories": [
+        "As a mobile user, I want to install the app on my home screen so that I can access my tasks without opening a browser",
+        "As a privacy-conscious user, I want the app to work fully offline so that my tasks are always available without any network dependency"
+      ],
+      "linked_spec_id": "001-pwa-installable-offline-app"
+    },
+    {
+      "id": "feature-6",
+      "title": "Dark Mode with System Preference Detection",
+      "description": "Implement a dark mode theme that activates automatically based on the user's system preference (prefers-color-scheme: dark) and can be toggled manually via a theme button. The preference is persisted in LocalStorage so the user's choice is remembered across sessions.",
+      "rationale": "Dark mode is a universally expected modern UX feature. Its absence is a notable gap compared to every major competitor. It is also specifically mentioned in the project's own known gaps. Using CSS custom properties (already implied by the clean CSS architecture), this is a relatively low-effort enhancement with high user satisfaction impact.",
+      "priority": "should",
+      "complexity": "medium",
+      "impact": "medium",
+      "phase_id": "phase-2",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Dark mode activates automatically when the OS/browser reports prefers-color-scheme: dark",
+        "A manual toggle button allows users to override the system preference",
+        "The selected theme preference is saved to LocalStorage and restored on next visit",
+        "All UI elements (inputs, buttons, cards, badges) are legible and accessible in dark mode",
+        "Color contrast ratios meet WCAG AA standards in both light and dark modes",
+        "The toggle is accessible via keyboard and has a proper ARIA label"
+      ],
+      "user_stories": [
+        "As a user who works at night, I want dark mode so that the app is comfortable to use in low-light environments",
+        "As a user with system dark mode enabled, I want the app to respect my OS preference automatically so that I don't need to configure it manually"
+      ],
+      "linked_spec_id": "005-dark-mode-with-system-preference-detection"
+    },
+    {
+      "id": "feature-7",
+      "title": "Optional Due Dates for Tasks",
+      "description": "Allow users to optionally set a due date when creating or editing a task. Display the due date on the task card. Highlight overdue tasks visually (e.g., red date label). Tasks without a due date remain unchanged in behavior. Due dates are stored as part of the task object in LocalStorage.",
+      "rationale": "Due dates are the most-cited missing feature in the current known gaps and a core capability in every major competitor. Google Tasks specifically received criticism for its half-baked date implementation with no time support. My Todo List can implement a clean, simple date picker that is 'good enough' for personal task management without adding the complexity of scheduling or reminders.",
+      "priority": "should",
+      "complexity": "medium",
+      "impact": "high",
+      "phase_id": "phase-2",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can optionally set a due date when adding or editing a task",
+        "Due dates are displayed on task cards in a readable format (e.g., 'Due Mar 15')",
+        "Overdue tasks (due date in the past, not completed) are visually highlighted",
+        "Due dates are optional — tasks without a due date behave exactly as before",
+        "Due dates are stored in LocalStorage and persist across sessions",
+        "The date picker works on both desktop and mobile (uses native date input type)"
+      ],
+      "user_stories": [
+        "As a user managing deadlines, I want to set a due date on tasks so that I know which tasks are time-sensitive",
+        "As a daily planner, I want to see overdue tasks highlighted so that I can prioritize them immediately"
+      ]
+    },
+    {
+      "id": "feature-8",
+      "title": "Task Priority Levels (High / Medium / Low)",
+      "description": "Allow users to assign a priority level (High, Medium, Low) to any task. Display the priority visually on the task card using a color indicator or icon. Tasks default to 'None' priority if unset. Priority can be set when creating or editing a task. The task list can be sorted by priority.",
+      "rationale": "Priority levels are a commonly requested gap in the current app and a core feature in Todoist and TickTick (the latter paywalls more advanced priority features). Google Tasks has no priority levels at all, drawing consistent criticism. Adding simple 3-level priorities gives users meaningful control without overwhelming complexity.",
+      "priority": "should",
+      "complexity": "medium",
+      "impact": "medium",
+      "phase_id": "phase-2",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can assign High, Medium, or Low priority to any task (or leave it unset)",
+        "Priority is displayed visually on the task card (e.g., colored dot or flag icon)",
+        "Priority can be set during task creation and updated when editing",
+        "Priority levels are stored in LocalStorage and persisted correctly",
+        "An optional 'Sort by priority' control reorders the visible list (High first)",
+        "Priority display is accessible (not color-only — includes text or icon label)"
+      ],
+      "user_stories": [
+        "As a user with many tasks, I want to mark some tasks as high priority so that I know which ones to tackle first",
+        "As a visual thinker, I want priority levels shown as color indicators so that I can scan my list and identify urgent items at a glance"
+      ]
+    },
+    {
+      "id": "feature-9",
+      "title": "One-Click Task Data Export (JSON & Plain Text)",
+      "description": "Add an 'Export tasks' button that downloads all current tasks from LocalStorage as a JSON file (for data portability) and optionally as a plain-text checklist. This gives users full, convenient access to their own data and reinforces the data ownership narrative.",
+      "rationale": "No major competitor allows easy task export without navigating account settings — users are effectively locked in to their proprietary formats (market gap-5). An export feature is low complexity, high trust-building value, and a concrete demonstration that My Todo List respects data ownership. It also provides a backup mechanism, addressing the LocalStorage-only constraint.",
+      "priority": "should",
+      "complexity": "low",
+      "impact": "high",
+      "phase_id": "phase-2",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "An 'Export' button is visible in the app (in a settings area or footer)",
+        "Clicking export downloads a JSON file containing all tasks with their full data (id, title, completed, createdAt, due date, priority)",
+        "A plain-text export option produces a human-readable checklist format",
+        "The export file is named with the current date (e.g., 'my-tasks-2026-03-08.json')",
+        "Export works entirely client-side with no network request",
+        "The feature works correctly in all major modern browsers"
+      ],
+      "user_stories": [
+        "As a data-ownership-conscious user, I want to export all my tasks so that I have a portable backup of my task history",
+        "As a user considering switching away from a locked-in competitor, I want an export feature so that I can start fresh with My Todo List and back up my data any time"
+      ]
+    },
+    {
+      "id": "feature-10",
+      "title": "Drag-and-Drop Task Reordering",
+      "description": "Allow users to manually reorder tasks by dragging and dropping task cards to a new position in the list. The new order is persisted to LocalStorage immediately. This gives users full control over task sequencing beyond filter-based views.",
+      "rationale": "Task reordering is a known gap in the current app. TickTick users specifically report that tasks reorder themselves unexpectedly due to sync conflicts — a problem My Todo List is structurally immune to since there is no sync. Implementing deterministic, local-only drag-and-drop reordering turns a competitor's weakness into a concrete strength.",
+      "priority": "should",
+      "complexity": "medium",
+      "impact": "medium",
+      "phase_id": "phase-2",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can drag task cards to reorder them within the list",
+        "The new order is persisted to LocalStorage immediately after a drop",
+        "Reordering works on both desktop (mouse) and mobile (touch)",
+        "The drag interaction has clear visual feedback (ghost card, drop target highlight)",
+        "Reordering is fully deterministic — the order never changes unexpectedly",
+        "Keyboard-accessible reordering is available as an accessibility fallback (e.g., move up/down buttons)"
+      ],
+      "user_stories": [
+        "As a user who plans tasks sequentially, I want to drag and reorder my task cards so that I can organize my day in the order I plan to work",
+        "As a user frustrated by TickTick's random task reordering, I want stable, manual ordering so that my list stays exactly as I arranged it"
+      ]
+    },
+    {
+      "id": "feature-11",
+      "title": "LocalStorage Quota Error Handling & User Notification",
+      "description": "Detect when the LocalStorage write fails due to a quota exceeded error (QuotaExceededError) and display a friendly, actionable message to the user. Suggest clearing completed tasks or exporting data. Prevent silent data loss. This addresses a known item in the technical debt list.",
+      "rationale": "LocalStorage is limited to ~5MB per origin. While unlikely for a simple todo app, users with large task histories could hit this limit silently — resulting in lost tasks with no explanation. This is identified as a technical debt item. Proper error handling ensures the app is reliable and trustworthy, which is core to the brand.",
+      "priority": "should",
+      "complexity": "low",
+      "impact": "medium",
+      "phase_id": "phase-2",
+      "dependencies": [
+        "feature-3",
+        "feature-9"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "A try/catch block wraps all LocalStorage write operations",
+        "When a QuotaExceededError is caught, a visible error message is shown to the user",
+        "The error message suggests actionable steps: clear completed tasks or export and start fresh",
+        "The app does not crash or silently lose data when quota is exceeded",
+        "The error state is recoverable — once space is freed, the app resumes normal operation"
+      ],
+      "user_stories": [
+        "As a long-term user, I want to see a helpful error message if my browser storage is full so that I know why a task wasn't saved and what to do about it",
+        "As a developer auditing the app, I want proper error handling around LocalStorage so that the app is robust and trustworthy"
+      ]
+    },
+    {
+      "id": "feature-12",
+      "title": "Task Categories & Tags",
+      "description": "Allow users to assign one or more freeform tags (e.g., 'work', 'personal', 'shopping') to tasks. Display tags as small badges on task cards. Enable filtering the task list by tag. Tags are stored in LocalStorage as part of the task object.",
+      "rationale": "Task categories are a known gap in the current app. While competitors like Todoist offer full project hierarchies (which users find overwhelming — pain-1-3), a lightweight tagging system gives organization power without structural complexity. This appeals to users who have outgrown flat lists but do not want Todoist's project overhead.",
+      "priority": "could",
+      "complexity": "medium",
+      "impact": "medium",
+      "phase_id": "phase-3",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can type one or more tags when creating or editing a task",
+        "Tags are displayed as small badges on task cards",
+        "A tag filter control allows users to filter the visible list by a specific tag",
+        "Tags are case-insensitive and deduplicated",
+        "Tags are persisted in LocalStorage and restored correctly on page load",
+        "Previously used tags are suggested via autocomplete when typing a new tag"
+      ],
+      "user_stories": [
+        "As a user with tasks across different life areas, I want to tag tasks with categories like 'work' or 'personal' so that I can quickly filter and focus on one area at a time",
+        "As a user frustrated by Todoist's complex project structure, I want a simple tagging system that organizes without overwhelming me"
+      ]
+    },
+    {
+      "id": "feature-13",
+      "title": "Subtasks & Task Notes",
+      "description": "Allow users to add optional notes (a longer description or context) to any task, and optionally break a task into subtasks with their own completion checkboxes. Subtasks are displayed as an expandable list under the parent task. All subtask and note data is stored in LocalStorage.",
+      "rationale": "Some tasks require more context or represent multi-step work that benefits from subtask tracking. This is a known gap and a feature offered by Google Tasks (with one-level subtasks). Providing notes + subtasks positions the app for users with slightly more complex needs without requiring the full project hierarchy that makes Todoist overwhelming.",
+      "priority": "could",
+      "complexity": "medium",
+      "impact": "medium",
+      "phase_id": "phase-3",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can add an optional text note to any task, visible when the task is expanded",
+        "Users can add up to 10 subtasks to a parent task",
+        "Subtasks have their own completion checkboxes",
+        "Parent task shows a subtask progress indicator (e.g., '2/3 subtasks done')",
+        "Subtask data is persisted in LocalStorage and restored on page load",
+        "The UI collapses subtasks by default to avoid visual clutter in the main list"
+      ],
+      "user_stories": [
+        "As a user with complex tasks, I want to add subtasks so that I can break down a large task into smaller steps and track my progress",
+        "As a note-taker, I want to add a brief note to a task so that I can capture context or details without needing a separate notes app"
+      ]
+    },
+    {
+      "id": "feature-14",
+      "title": "Recurring Tasks",
+      "description": "Allow users to mark a task as recurring (daily, weekly, monthly) so that when it is completed, it automatically reappears for the next cycle. The recurrence schedule is stored with the task in LocalStorage. This enables use cases like habit tracking and weekly reviews.",
+      "rationale": "Recurring tasks are paywalled in both TickTick (premium) and Any.do (premium), making this a clear market gap opportunity (market gap-4). Users with daily habits or weekly review routines are well-served by a free, local-only recurring task feature. This is a medium-complexity feature with high user-value for the habit-tracking segment.",
+      "priority": "could",
+      "complexity": "medium",
+      "impact": "high",
+      "phase_id": "phase-3",
+      "dependencies": [
+        "feature-7"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can set a task as recurring with a frequency of daily, weekly, or monthly",
+        "When a recurring task is completed, it is automatically re-added for the next occurrence (with the next due date set)",
+        "Recurring tasks display a recurrence indicator (e.g., a cycle icon with frequency label)",
+        "Users can stop recurrence by editing the task and removing the recurrence setting",
+        "Recurrence logic runs client-side on page load, checking for tasks that should have recurred since last visit",
+        "Recurring tasks are fully persisted in LocalStorage with no external service dependency"
+      ],
+      "user_stories": [
+        "As a user building daily habits, I want recurring tasks so that my daily checklist automatically resets each morning without manual re-entry",
+        "As a user frustrated by TickTick's paywall on recurring tasks, I want this feature free so that I can track my weekly routines without a subscription"
+      ]
+    },
+    {
+      "id": "feature-15",
+      "title": "In-App Keyboard Shortcut Help Sheet",
+      "description": "Add a '?' keyboard shortcut or a help icon that opens a modal or tooltip listing all available keyboard shortcuts in the app. This makes the keyboard-first experience discoverable and reinforces the developer/power user persona.",
+      "rationale": "With feature-4 introducing keyboard shortcuts, users need a way to discover them. A discoverable help sheet is a low-effort, high-polish addition that makes the app feel complete. This directly appeals to the 'Developers or technical users who appreciate a self-contained, zero-dependency tool' secondary persona.",
+      "priority": "could",
+      "complexity": "low",
+      "impact": "low",
+      "phase_id": "phase-3",
+      "dependencies": [
+        "feature-4"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Pressing '?' opens a keyboard shortcut reference modal",
+        "A help icon (e.g., '?') in the UI also opens the shortcuts reference",
+        "The modal lists all available keyboard shortcuts with their actions",
+        "The modal can be dismissed with Escape or by clicking outside it",
+        "The modal is accessible (focus-trapped, ARIA role='dialog', labeled)"
+      ],
+      "user_stories": [
+        "As a keyboard-first user, I want a help sheet listing all shortcuts so that I can learn and use the app without touching the mouse",
+        "As a new user, I want to discover keyboard shortcuts easily so that I can get the most out of the app"
+      ]
+    },
+    {
+      "id": "feature-16",
+      "title": "Optional End-to-End Encrypted Cloud Sync",
+      "description": "Offer an opt-in cloud sync mechanism where task data is encrypted client-side before being stored in a minimal backend. The encryption key never leaves the device. Users who choose local-only storage are unaffected. This addresses the cross-device use case without compromising the privacy guarantee for users who don't opt in.",
+      "rationale": "The biggest structural limitation of the current app is single-device isolation — tasks don't sync across a user's phone and laptop. Every competitor offers sync, but all expose plaintext data to their servers. An E2E-encrypted optional sync would be a genuine differentiator for privacy-conscious multi-device users. This requires significant architectural investment (backend, key management, sync protocol) and is appropriate only for a future phase.",
+      "priority": "wont",
+      "complexity": "high",
+      "impact": "high",
+      "phase_id": "phase-4",
+      "dependencies": [
+        "feature-9",
+        "feature-18"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Sync is entirely opt-in — local-only users are unaffected and the default remains local storage",
+        "Task data is encrypted client-side using the Web Crypto API before leaving the device",
+        "The encryption key is derived from a passphrase known only to the user — never transmitted",
+        "Tasks sync correctly across two devices using the same passphrase",
+        "Zero plaintext task content is ever stored on the server",
+        "The privacy badge accurately reflects sync status and encryption guarantee"
+      ],
+      "user_stories": [
+        "As a multi-device user, I want to optionally sync my tasks across my phone and laptop so that my task list is consistent everywhere",
+        "As a privacy-conscious user, I want any sync to use end-to-end encryption so that the server never sees my task content"
+      ]
+    },
+    {
+      "id": "feature-17",
+      "title": "PWA Push Notifications & Local Reminders",
+      "description": "Leverage the installed PWA's Notification API to allow users to set optional browser-native reminders for tasks with due dates. Reminders are scheduled locally using the Notifications API and trigger even when the browser tab is closed (requires Service Worker). No external notification service is used.",
+      "rationale": "Reminders and notifications are paywalled in Todoist (pain-1-2) and TickTick (pain-4-4). Todoist also has reliability issues with reminder delivery (pain-1-4). A local-only, PWA-powered notification system would offer the same capability for free, without any external service dependency. Requires feature-5 (PWA) and feature-7 (due dates) as prerequisites.",
+      "priority": "wont",
+      "complexity": "high",
+      "impact": "high",
+      "phase_id": "phase-4",
+      "dependencies": [
+        "feature-5",
+        "feature-7"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "Users can opt in to notifications for tasks with due dates",
+        "Notification permission is requested only when the user explicitly sets a reminder",
+        "Reminders fire via Service Worker notifications at the scheduled time, even when the tab is closed",
+        "No external notification service or server is used — all scheduling is local",
+        "Users can disable notifications per-task or globally in app settings"
+      ],
+      "user_stories": [
+        "As a user with time-sensitive tasks, I want browser notifications for due tasks so that I don't miss important deadlines",
+        "As a privacy-conscious user, I want reminders that work entirely offline so that no external service ever receives my task data or schedule"
+      ]
+    },
+    {
+      "id": "feature-18",
+      "title": "Code Architecture Refactoring & Build System Setup",
+      "description": "Refactor the single-file HTML/CSS/JS architecture into separated concerns: dedicated CSS file(s), a JavaScript module structure, and an optional lightweight build step (e.g., esbuild or Vite). Add ESLint and Prettier for code quality. This addresses the primary technical debt item and enables sustainable feature development at scale.",
+      "rationale": "The single-file architecture is a deliberate simplicity choice for the MVP, but becomes a maintenance burden as features grow. Refactoring to separated files with a build system is a prerequisite for adding TypeScript support, automated testing, and more complex features like E2E encryption. This is infrastructure investment, not user-facing value.",
+      "priority": "wont",
+      "complexity": "high",
+      "impact": "low",
+      "phase_id": "phase-4",
+      "dependencies": [],
+      "status": "planned",
+      "acceptance_criteria": [
+        "HTML, CSS, and JavaScript are separated into dedicated files with clear module boundaries",
+        "A build step (e.g., esbuild) bundles output to a single distributable HTML file (preserving the zero-dependency deploy model)",
+        "ESLint and Prettier are configured with a standard ruleset",
+        "All existing features pass a manual smoke test after refactoring",
+        "A README.md documents the new development workflow (install, develop, build)"
+      ],
+      "user_stories": [
+        "As a developer contributor, I want the codebase organized into separate files with linting so that I can contribute features without navigating a single giant file",
+        "As the project maintainer, I want a build system so that I can add TypeScript or testing incrementally without rewriting the architecture"
+      ]
+    },
+    {
+      "id": "feature-19",
+      "title": "Automated Test Suite (Unit & Integration)",
+      "description": "Introduce a testing framework (e.g., Vitest or Jest) with unit tests for core logic (task CRUD, LocalStorage read/write, filter state) and integration tests for key user flows (add task → appears in list → persists after reload). This addresses the 'no automated tests' technical debt item.",
+      "rationale": "The absence of automated tests is a technical debt risk as the app grows. Each new feature currently requires manual regression testing. A test suite enables confident refactoring (especially after feature-18), continuous integration, and reduces the risk of regressions as the codebase scales. This is a developer experience investment with no direct user-facing impact.",
+      "priority": "wont",
+      "complexity": "medium",
+      "impact": "low",
+      "phase_id": "phase-4",
+      "dependencies": [
+        "feature-18"
+      ],
+      "status": "planned",
+      "acceptance_criteria": [
+        "A test runner (Vitest or Jest) is installed and configured",
+        "Unit tests cover: task creation, task deletion, task completion toggle, task editing, LocalStorage read/write, filter logic",
+        "Integration tests cover: add → list → persist → reload flow, and filter → display flow",
+        "Tests run in CI via a GitHub Actions workflow on push to main",
+        "All tests pass before any new feature is merged"
+      ],
+      "user_stories": [
+        "As a developer, I want an automated test suite so that I can add features confidently without breaking existing functionality",
+        "As the project maintainer, I want CI-enforced tests so that contributions from others are validated automatically"
+      ]
+    }
+  ],
+  "generation": {
+    "provider": "auto_claude",
+    "runner": "runners/roadmap_runner.py",
+    "model": "sonnet",
+    "thinking_level": "medium",
+    "competitor_analysis": true,
+    "generated_via_claude_code": true,
+    "generated_at": "2026-03-08T22:04:29.484Z"
+  }
+}

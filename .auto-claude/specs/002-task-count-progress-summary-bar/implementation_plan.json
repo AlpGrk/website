@@ -1,0 +1,142 @@
+{
+  "status": "in_progress",
+  "workflow_type": "server_first",
+  "summary": {
+    "total_phases": 1,
+    "total_subtasks": 5,
+    "completed_subtasks": 3,
+    "failed_subtasks": 0
+  },
+  "subtasks": [
+    {
+      "id": "setup",
+      "description": "Prepare isolated worktree and runtime",
+      "status": "completed"
+    },
+    {
+      "id": "add-summary-bar-html-element-and-css",
+      "description": "Insert a <div id=\"summary-bar\"> element between the task list and the bottom of .container. Add CSS styles: muted text color (#888), small font size (~0.85rem), centered, padding above, and ensure it remains visible on mobile viewports without scrolling.",
+      "status": "completed"
+    },
+    {
+      "id": "implement-filter-aware-rendersummary-function",
+      "description": "Add a renderSummary() function that computes counts from the global tasks array (not filteredTasks): activeCount = tasks where !completed, completedCount = tasks where completed. Output text based on currentFilter: 'all' → 'X remaining · Y completed'; 'active' → 'X active tasks'; 'completed' → 'Y completed tasks'. When tasks.length === 0, show 'No tasks yet — add one above!' instead of counts.",
+      "status": "completed"
+    },
+    {
+      "id": "wire-rendersummary-into-render-and-update-empty-",
+      "description": "Call renderSummary() at the end of the render() function so the bar updates on every state change. Update the #empty-msg text to be context-aware: when tasks.length === 0 show 'No tasks yet — add one above!'; when filtered view is empty but tasks exist show 'No tasks here.' (existing behavior).",
+      "status": "in_progress"
+    },
+    {
+      "id": "review",
+      "description": "Run AI review and prepare human handoff",
+      "status": "pending"
+    }
+  ],
+  "phases": [
+    {
+      "id": "implementation",
+      "name": "Implementation",
+      "subtasks": [
+        {
+          "id": "setup",
+          "description": "Prepare isolated worktree and runtime",
+          "status": "completed"
+        },
+        {
+          "id": "add-summary-bar-html-element-and-css",
+          "description": "Insert a <div id=\"summary-bar\"> element between the task list and the bottom of .container. Add CSS styles: muted text color (#888), small font size (~0.85rem), centered, padding above, and ensure it remains visible on mobile viewports without scrolling.",
+          "status": "completed"
+        },
+        {
+          "id": "implement-filter-aware-rendersummary-function",
+          "description": "Add a renderSummary() function that computes counts from the global tasks array (not filteredTasks): activeCount = tasks where !completed, completedCount = tasks where completed. Output text based on currentFilter: 'all' → 'X remaining · Y completed'; 'active' → 'X active tasks'; 'completed' → 'Y completed tasks'. When tasks.length === 0, show 'No tasks yet — add one above!' instead of counts.",
+          "status": "completed"
+        },
+        {
+          "id": "wire-rendersummary-into-render-and-update-empty-",
+          "description": "Call renderSummary() at the end of the render() function so the bar updates on every state change. Update the #empty-msg text to be context-aware: when tasks.length === 0 show 'No tasks yet — add one above!'; when filtered view is empty but tasks exist show 'No tasks here.' (existing behavior).",
+          "status": "in_progress"
+        },
+        {
+          "id": "review",
+          "description": "Run AI review and prepare human handoff",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "qa_signoff": null,
+  "status_history": [
+    {
+      "status": "backlog",
+      "message": "Spec created from roadmap feature.",
+      "timestamp": "2026-03-08T23:22:27.168Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-create-spec"
+    },
+    {
+      "status": "planning",
+      "message": "Build orchestration started and worktree prepared.",
+      "timestamp": "2026-03-09T09:38:21.154Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "project": "website",
+        "worktreePath": "/opt/projects/website/.auto-claude/worktrees/tasks/002-task-count-progress-summary-bar"
+      }
+    },
+    {
+      "status": "planning",
+      "message": "Planning completed and implementation subtasks were generated.",
+      "timestamp": "2026-03-09T09:38:54.556Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "totalSubtasks": 5
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 1/3: Insert a <div id=\"summary-bar\"> element between the task list and the bottom of .container. Add CSS styles: muted text color (#888), small font size (~0.85rem), centered, padding above, and ensure it remains visible on mobile viewports without scrolling.",
+      "timestamp": "2026-03-09T09:38:54.557Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-summary-bar-html-element-and-css",
+        "subtaskDescription": "Insert a <div id=\"summary-bar\"> element between the task list and the bottom of .container. Add CSS styles: muted text color (#888), small font size (~0.85rem), centered, padding above, and ensure it remains visible on mobile viewports without scrolling.",
+        "index": 1,
+        "total": 3
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 2/3: Add a renderSummary() function that computes counts from the global tasks array (not filteredTasks): activeCount = tasks where !completed, completedCount = tasks where completed. Output text based on currentFilter: 'all' → 'X remaining · Y completed'; 'active' → 'X active tasks'; 'completed' → 'Y completed tasks'. When tasks.length === 0, show 'No tasks yet — add one above!' instead of counts.",
+      "timestamp": "2026-03-09T09:39:23.744Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "implement-filter-aware-rendersummary-function",
+        "subtaskDescription": "Add a renderSummary() function that computes counts from the global tasks array (not filteredTasks): activeCount = tasks where !completed, completedCount = tasks where completed. Output text based on currentFilter: 'all' → 'X remaining · Y completed'; 'active' → 'X active tasks'; 'completed' → 'Y completed tasks'. When tasks.length === 0, show 'No tasks yet — add one above!' instead of counts.",
+        "index": 2,
+        "total": 3
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 3/3: Call renderSummary() at the end of the render() function so the bar updates on every state change. Update the #empty-msg text to be context-aware: when tasks.length === 0 show 'No tasks yet — add one above!'; when filtered view is empty but tasks exist show 'No tasks here.' (existing behavior).",
+      "timestamp": "2026-03-09T09:39:58.720Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "wire-rendersummary-into-render-and-update-empty-",
+        "subtaskDescription": "Call renderSummary() at the end of the render() function so the bar updates on every state change. Update the #empty-msg text to be context-aware: when tasks.length === 0 show 'No tasks yet — add one above!'; when filtered view is empty but tasks exist show 'No tasks here.' (existing behavior).",
+        "index": 3,
+        "total": 3
+      }
+    }
+  ],
+  "created_at": "2026-03-08T23:22:27.168Z",
+  "updated_at": "2026-03-09T09:39:58.720Z"
+}

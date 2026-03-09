@@ -1,0 +1,495 @@
+{
+  "project_context": {
+    "project_name": "My Todo List",
+    "project_type": "web-app (privacy-first, no-signup browser-based todo app)",
+    "target_audience": "Privacy-conscious individual who wants a fast, no-signup task manager they can use immediately in the browser"
+  },
+  "competitors": [
+    {
+      "id": "competitor-1",
+      "name": "Todoist",
+      "url": "https://todoist.com",
+      "description": "One of the most popular cross-platform task management apps, with rich features including projects, labels, filters, comments, and integrations. Available on all major platforms.",
+      "relevance": "high",
+      "pain_points": [
+        {
+          "id": "pain-1-1",
+          "description": "Account creation and email sign-up required before any tasks can be added — users receive marketing emails immediately and struggle to opt out",
+          "source": "Trustpilot reviews (https://www.trustpilot.com/review/todoist.com); Capterra 2026 reviews (https://www.capterra.com/p/149339/Todoist-for-Business/reviews/)",
+          "severity": "high",
+          "frequency": "Repeatedly mentioned across multiple review platforms",
+          "opportunity": "My Todo List requires zero sign-up — users open the page and add tasks immediately with no email, no account, no friction"
+        },
+        {
+          "id": "pain-1-2",
+          "description": "Core features like reminders, custom filters, and deadline views are locked behind a paid subscription ($5–$8/month), making the free tier feel crippled for real-world use",
+          "source": "G2 reviews (https://www.g2.com/products/todoist/reviews); Android Authority (https://www.androidauthority.com/best-todoist-alternatives-3615857/); BAIZAAR analysis (https://baizaar.tools/todoist-pro-vs-free-2025/)",
+          "severity": "high",
+          "frequency": "Very commonly cited as the top frustration in reviews",
+          "opportunity": "My Todo List is fully free with no tiers, no paywalled features, and no upsell prompts"
+        },
+        {
+          "id": "pain-1-3",
+          "description": "Feature set is overwhelming for users who just want a simple personal to-do list — complex project structures, labels, and karma scoring confuse casual users",
+          "source": "Quora discussion on to-do app problems (https://www.quora.com/What-are-biggest-problems-with-to-do-apps-you-are-using); Upbase blog Todoist review (https://upbase.io/blog/todoist-review/)",
+          "severity": "medium",
+          "frequency": "Frequently mentioned in comparison articles and casual user reviews",
+          "opportunity": "My Todo List is intentionally minimal — add, complete, delete, filter. No onboarding required"
+        },
+        {
+          "id": "pain-1-4",
+          "description": "Sync and notification reliability issues — reminders are sometimes missed, and sync problems require app restarts",
+          "source": "Todoist Known Issues page (https://www.todoist.com/help/articles/known-issues-d6dyMz9Y); Capterra reviews (https://www.capterra.com/p/149339/Todoist-for-Business/reviews/)",
+          "severity": "medium",
+          "frequency": "Reported by multiple users across 2024–2025",
+          "opportunity": "My Todo List uses local-only LocalStorage — no sync required, no server dependency, tasks always available instantly"
+        },
+        {
+          "id": "pain-1-5",
+          "description": "Data collection and third-party sharing — Todoist shares data with cloud storage, analytics, and payment processors; privacy-sensitive users are uncomfortable",
+          "source": "Doist Privacy Policy (https://doist.com/privacy); VPNSuper analysis (https://www.vpnsuper.com/blog/is-todoist-safe)",
+          "severity": "high",
+          "frequency": "A consistent concern for privacy-aware users seeking Todoist alternatives",
+          "opportunity": "My Todo List makes zero external network requests — tasks never leave the device, provably enforced in the source code"
+        }
+      ],
+      "strengths": [
+        "Excellent cross-platform availability (iOS, Android, Web, Desktop)",
+        "Powerful project hierarchy and filtering",
+        "Natural language date parsing",
+        "Strong integrations ecosystem (Slack, Google Calendar, etc.)",
+        "SOC2 Type 2 compliant with established trust"
+      ],
+      "market_position": "Market leader in personal and small-team task management. Competes on features and integrations. Targets power users and teams willing to pay for premium productivity tooling."
+    },
+    {
+      "id": "competitor-2",
+      "name": "Microsoft To Do",
+      "url": "https://todo.microsoft.com",
+      "description": "Microsoft's free task management app integrated into the Microsoft 365 ecosystem. Successor to Wunderlist with deep Office integration.",
+      "relevance": "high",
+      "pain_points": [
+        {
+          "id": "pain-2-1",
+          "description": "Requires a Microsoft account to use — users in Microsoft-free households or those wanting a quick personal tool must create an account first",
+          "source": "Microsoft Community Hub (https://techcommunity.microsoft.com/category/microsoftto-do); Software Advice reviews (https://www.softwareadvice.com/project-management/microsoft-to-do-profile/reviews/)",
+          "severity": "high",
+          "frequency": "Account requirement is a hard barrier universally noted in comparisons",
+          "opportunity": "My Todo List works with zero account — suitable for users who avoid Microsoft account lock-in"
+        },
+        {
+          "id": "pain-2-2",
+          "description": "Sync failures between Android, iPhone, and Windows — task ordering and updates take hours or days to reflect across devices",
+          "source": "Microsoft Community Hub sync discussion (https://techcommunity.microsoft.com/discussions/to-do/microsoft-to-do-not-working/4471507); Microsoft Q&A (https://learn.microsoft.com/en-us/answers/questions/4714137/three-super-annoying-issues-to-bring-into-2025)",
+          "severity": "high",
+          "frequency": "Multiple active threads on Microsoft support forums in 2025",
+          "opportunity": "My Todo List avoids cross-device sync entirely — tasks live locally and are always consistent on the device you use"
+        },
+        {
+          "id": "pain-2-3",
+          "description": "Feature inconsistency between platforms — web version has different capabilities from the Android app, causing confusion and unreliable workflows",
+          "source": "Digital Project Manager review (https://thedigitalprojectmanager.com/tools/microsoft-to-do-review/); Microsoft Q&A user complaints",
+          "severity": "medium",
+          "frequency": "Noted consistently in 2024–2025 reviews",
+          "opportunity": "My Todo List is a single HTML page — identical experience everywhere with no platform discrepancies"
+        },
+        {
+          "id": "pain-2-4",
+          "description": "App feels stagnant — feature development is slow and the app has not evolved significantly, frustrating users who compare it to faster-moving competitors",
+          "source": "Software Advice reviews (https://www.softwareadvice.com/project-management/microsoft-to-do-profile/reviews/); Digital Project Manager review",
+          "severity": "low",
+          "frequency": "Mentioned in a notable minority of reviews",
+          "opportunity": "Being a lean, open-source-auditable project allows faster iteration on user-requested features"
+        },
+        {
+          "id": "pain-2-5",
+          "description": "Privacy concerns as part of Microsoft ecosystem — task data is tied to a Microsoft account and subject to Microsoft's data retention policies",
+          "source": "Broader Microsoft privacy policy concerns; user reviews on Software Advice",
+          "severity": "medium",
+          "frequency": "A notable concern for privacy-focused users",
+          "opportunity": "My Todo List stores everything in browser LocalStorage — no Microsoft account, no cloud retention, full data ownership"
+        }
+      ],
+      "strengths": [
+        "Free with a Microsoft account",
+        "Deep Microsoft 365 integration (Outlook tasks, Teams)",
+        "Clean, modern UI with My Day feature",
+        "Available on all major platforms",
+        "Familiar brand trust for Windows users"
+      ],
+      "market_position": "Positioned as the free task manager for the Microsoft 365 ecosystem. Targets existing Microsoft users rather than privacy-first or account-free seekers."
+    },
+    {
+      "id": "competitor-3",
+      "name": "Google Tasks",
+      "url": "https://tasks.google.com",
+      "description": "Google's lightweight task management app integrated with Gmail and Google Calendar. Designed for simplicity within the Google Workspace ecosystem.",
+      "relevance": "high",
+      "pain_points": [
+        {
+          "id": "pain-3-1",
+          "description": "Google account required — users without a Google account or those who want separation from Google's data ecosystem cannot use the app at all",
+          "source": "General usage requirement; CRM.org review (https://crm.org/news/google-tasks-review)",
+          "severity": "high",
+          "frequency": "Universal barrier noted in every comparison article",
+          "opportunity": "My Todo List has zero account requirement — truly open access from any browser without identity"
+        },
+        {
+          "id": "pain-3-2",
+          "description": "Extremely limited feature set — no time-of-day deadline support (only date), no priority levels, no subtask nesting beyond one level, no tags, no collaboration",
+          "source": "Android Central (https://www.androidcentral.com/apps-software/google-tasks-rolls-out-its-long-overdue-deadline-feature-but-its-still-half-baked); TrustRadius reviews (https://www.trustradius.com/products/google-tasks/reviews); TechRadar review (https://www.techradar.com/reviews/google-tasks)",
+          "severity": "medium",
+          "frequency": "Consistently flagged in user reviews and tech media",
+          "opportunity": "My Todo List matches the simplicity of Google Tasks while offering editing, filtering, and guaranteed privacy that Google Tasks cannot provide"
+        },
+        {
+          "id": "pain-3-3",
+          "description": "No collaboration or sharing support — tasks cannot be shared or assigned, limiting use to purely solo personal lists",
+          "source": "Digital Project Manager review (https://thedigitalprojectmanager.com/tools/google-tasks-review/); CRM.org review",
+          "severity": "medium",
+          "frequency": "Noted in most comparison articles as a feature gap vs. competitors",
+          "opportunity": "My Todo List also focuses on personal task management, validating this as a valid niche rather than a gap"
+        },
+        {
+          "id": "pain-3-4",
+          "description": "Privacy concern — Google uses task data as part of its broader advertising and personalization data profile; users with sensitive tasks feel uncomfortable",
+          "source": "General Google privacy policy concerns; IAPP 2025 privacy guidance (https://iapp.org/news/a/10-areas-for-privacy-programs-to-focus-in-2025)",
+          "severity": "high",
+          "frequency": "A persistent concern for users seeking Google-free productivity alternatives",
+          "opportunity": "My Todo List makes no external requests — Google cannot see, index, or monetize task content"
+        },
+        {
+          "id": "pain-3-5",
+          "description": "Performance degrades with large task lists — the app slows noticeably as the number of tasks grows, making it impractical for users with long backlog lists",
+          "source": "crm.org Google Tasks review 2025 (https://crm.org/news/google-tasks-review); Getting Things Done community forum discussion (https://forum.gettingthingsdone.com/threads/opinions-on-google-tasks.9783/)",
+          "severity": "medium",
+          "frequency": "Reported by long-term users who accumulate tasks over months",
+          "opportunity": "My Todo List reads directly from LocalStorage using synchronous, browser-native APIs with no server round-trips — rendering is fast regardless of task count"
+        }
+      ],
+      "strengths": [
+        "Free and integrated into Gmail and Google Calendar",
+        "Extremely simple — low learning curve",
+        "Available on iOS and Android",
+        "Seamless for existing Google Workspace users",
+        "Subtask support for basic hierarchy"
+      ],
+      "market_position": "Positioned as the minimal, free task layer for Gmail and Google Calendar users. Competes on ecosystem lock-in rather than standalone merit."
+    },
+    {
+      "id": "competitor-4",
+      "name": "TickTick",
+      "url": "https://ticktick.com",
+      "description": "Feature-rich task and habit management app with built-in calendar, Pomodoro timer, and collaboration tools. Popular among power users.",
+      "relevance": "medium",
+      "pain_points": [
+        {
+          "id": "pain-4-1",
+          "description": "Privacy concerns due to Chinese company ownership — some users feel uncomfortable with sensitive personal task data stored on servers subject to Chinese data law",
+          "source": "PrivacySpy analysis (https://privacyspy.org/product/ticktick/); VPNSuper analysis (https://www.vpnsuper.com/blog/is-ticktick-safe); AlternativeTo discussions (https://alternativeto.net/software/ticktick/about/)",
+          "severity": "high",
+          "frequency": "Cited as a notable concern in numerous reviews and security discussions",
+          "opportunity": "My Todo List stores all data locally on the user's device — no foreign or domestic server ever receives task data"
+        },
+        {
+          "id": "pain-4-2",
+          "description": "Account creation mandatory — no guest or trial mode; users must register before experiencing the app",
+          "source": "Cloudwards TickTick review (https://www.cloudwards.net/ticktick-review/); App Store listing behavior",
+          "severity": "high",
+          "frequency": "Noted across all onboarding-focused reviews",
+          "opportunity": "My Todo List is immediately usable with no registration barrier"
+        },
+        {
+          "id": "pain-4-3",
+          "description": "Task ordering bugs — tasks frequently reorder themselves unexpectedly, likely due to cache/sync conflicts",
+          "source": "Capterra reviews (https://www.capterra.com/p/170641/TickTick/reviews/); user reports cited in Cloudwards review",
+          "severity": "medium",
+          "frequency": "Mentioned in multiple user reviews across 2024–2025",
+          "opportunity": "My Todo List tasks are stored in a local ordered array — reorder is deterministic and never has sync conflicts"
+        },
+        {
+          "id": "pain-4-4",
+          "description": "Key features (calendar view, reminders, habit tracking) locked behind a premium subscription",
+          "source": "Cloudwards TickTick review (https://www.cloudwards.net/ticktick-review/); work-management.org review (https://work-management.org/to-do-list/ticktick-review/)",
+          "severity": "medium",
+          "frequency": "Commonly noted as a limitation in free tier comparison articles",
+          "opportunity": "My Todo List is entirely free with no paid tier or upsell mechanism"
+        },
+        {
+          "id": "pain-4-5",
+          "description": "Unexpected automatic billing — users report being charged for premium plan renewals without clear consent or advance notice, eroding trust",
+          "source": "Trustpilot TickTick reviews (https://www.trustpilot.com/review/ticktick.com); Capterra reviews (https://www.capterra.com/p/170641/TickTick/reviews/)",
+          "severity": "high",
+          "frequency": "Appears in a notable share of 1–2 star Trustpilot reviews",
+          "opportunity": "My Todo List has no subscription model, no billing, and never collects payment information"
+        },
+        {
+          "id": "pain-4-6",
+          "description": "Dated and cluttered interface — TickTick has not significantly refreshed its UI in years, making it feel visually outdated compared to newer productivity apps",
+          "source": "morgen.so TickTick vs Todoist comparison 2026 (https://www.morgen.so/blog-posts/ticktick-vs-todoist); efficient.app TickTick review 2026 (https://efficient.app/apps/ticktick)",
+          "severity": "medium",
+          "frequency": "Consistently noted in comparative reviews as TickTick's main design weakness",
+          "opportunity": "My Todo List uses a clean, card-based modern UI that prioritises clarity over feature density"
+        }
+      ],
+      "strengths": [
+        "Rich feature set including calendar, Pomodoro, and habit tracking",
+        "Smooth cross-platform experience",
+        "Natural language date input",
+        "Attractive and polished UI",
+        "Free tier reasonably functional for basic use"
+      ],
+      "market_position": "Positioned as an all-in-one productivity suite competing with Todoist on features. Targets power users wanting calendar + task + habit management in one app."
+    },
+    {
+      "id": "competitor-5",
+      "name": "Any.do",
+      "url": "https://any.do",
+      "description": "Personal and team task management app focused on daily planning with a clean UI, voice input, and calendar integration.",
+      "relevance": "medium",
+      "pain_points": [
+        {
+          "id": "pain-5-1",
+          "description": "Free plan severely limited — recurring tasks, integrations, and most useful features require a paid subscription",
+          "source": "Cloudwards Any.do review (https://www.cloudwards.net/any-do-review/); Capterra reviews (https://www.capterra.com/p/173614/Any-do/reviews/)",
+          "severity": "high",
+          "frequency": "Consistently the top complaint in free-tier user reviews",
+          "opportunity": "My Todo List provides all features (add, edit, complete, filter, persist) at zero cost with no subscription"
+        },
+        {
+          "id": "pain-5-2",
+          "description": "Completed tasks cannot be permanently deleted — they remain in history as 'done,' creating clutter for users who want a clean list",
+          "source": "Capterra reviews (https://www.capterra.com/p/173614/Any-do/reviews/); AppSumo reviews (https://appsumo.com/products/anydo/reviews/)",
+          "severity": "medium",
+          "frequency": "Mentioned by multiple users as an unexpected frustration",
+          "opportunity": "My Todo List allows permanent task deletion — users have full control over their task history"
+        },
+        {
+          "id": "pain-5-3",
+          "description": "Support team unresponsive and unhelpful — users report purchasing licenses and being unable to use features, with poor customer service resolution",
+          "source": "Capterra reviews 2025 (https://www.capterra.com/p/173614/Any-do/reviews/); G2 reviews (https://www.g2.com/products/any-do/reviews)",
+          "severity": "medium",
+          "frequency": "Notable thread in recent reviews",
+          "opportunity": "My Todo List is open-source and self-contained — no support dependency, no vendor lock-in"
+        },
+        {
+          "id": "pain-5-4",
+          "description": "Desktop and web versions have performance issues and feel inconsistent vs. the mobile app",
+          "source": "Digital Project Manager Any.do review (https://thedigitalprojectmanager.com/tools/anydo-review/); Cloudwards review",
+          "severity": "medium",
+          "frequency": "Repeatedly noted in multi-platform comparisons",
+          "opportunity": "My Todo List is a single self-contained HTML page — identical across all browsers and devices, no native app required"
+        }
+      ],
+      "strengths": [
+        "Clean, attractive UI and onboarding",
+        "Focus Mode for daily planning ritual",
+        "Voice input for hands-free task creation",
+        "Good mobile app experience",
+        "Shared family/team lists"
+      ],
+      "market_position": "Positioned as a lifestyle productivity app targeting casual users and families. Competes on aesthetics and daily planning rituals rather than power features."
+    },
+    {
+      "id": "competitor-6",
+      "name": "Notion (used as a task manager)",
+      "url": "https://notion.so",
+      "description": "An all-in-one workspace combining notes, databases, wikis, and tasks. Frequently adopted as a task manager via checklist blocks, kanban boards, or database views — though it is not purpose-built for task management.",
+      "relevance": "medium",
+      "pain_points": [
+        {
+          "id": "pain-6-1",
+          "description": "Excessive setup overhead for basic task management — users must build a database, choose views, and configure properties before adding their first task; casual users frequently give up before getting value",
+          "source": "Medium: 'Why Users Abandon Notion' by Ruslans Melniks (https://medium.com/@ruslansmelniks/why-users-abandon-notion-complexity-limitations-and-the-rise-of-ai-alternatives-cba91a95b535); unanswered.io 'Is Notion Overkill for Personal Use?' (https://unanswered.io/guide/is-notion-overkill-for-personal-use)",
+          "severity": "high",
+          "frequency": "One of the top-cited reasons users abandon Notion for task management on r/productivity and r/Notion",
+          "opportunity": "My Todo List requires zero setup — open the page and type a task immediately with no databases, views, or templates"
+        },
+        {
+          "id": "pain-6-2",
+          "description": "Mandatory account creation and internet dependency — Notion requires sign-up and an active internet connection; offline access is limited and requires prior setup",
+          "source": "XDA Developers: 'Notion is really starting to fall behind alternatives' (https://www.xda-developers.com/notion-starting-to-fall-behind-alternatives-cant-see-myself-sticking-around/); Reddit discussions on r/Notion and r/productivity",
+          "severity": "high",
+          "frequency": "Consistently raised by users seeking offline or no-account alternatives",
+          "opportunity": "My Todo List is fully offline-capable with zero internet dependency after first page load; can be saved and run from disk"
+        },
+        {
+          "id": "pain-6-3",
+          "description": "Workspace maintenance burden — Notion systems grow increasingly complex and require a dedicated maintainer; team setups are frequently abandoned because no one keeps them updated",
+          "source": "nikofischer.com '17-App Odyssey: From Todoist to Notion' (https://nikofischer.com/17-app-odyssey-todoist-to-notion); ones.com 'Notion AI: Game-Changer or Overhyped? Reddit Users Weigh In' (https://ones.com/blog/notion-ai-game-changer-or-overhyped-reddit-users-weigh-in/)",
+          "severity": "medium",
+          "frequency": "A recurring theme in long-term Notion usage retrospectives",
+          "opportunity": "My Todo List has no system to maintain — a fixed, stable interface that works without ongoing configuration"
+        },
+        {
+          "id": "pain-6-4",
+          "description": "Slow load times and lag — Notion pages are noticeably heavy, especially on mobile, frustrating users who want instant access to a simple task list",
+          "source": "AFFiNE blog 'Tired of Notion's Lag?' (https://affine.pro/blog/notion-alternative-notes); XDA Developers article on Notion falling behind",
+          "severity": "medium",
+          "frequency": "Prominently cited in 2025–2026 'Notion alternatives' roundups",
+          "opportunity": "My Todo List is a single self-contained HTML file with no external resources — loads near-instantly on any device or network"
+        }
+      ],
+      "strengths": [
+        "Extremely flexible — adaptable to almost any workflow or content type",
+        "Combines notes, wikis, databases, and tasks in one tool",
+        "Large community template ecosystem",
+        "AI writing and summarization features added in 2024–2026",
+        "Strong for knowledge management alongside task tracking"
+      ],
+      "market_position": "Dominant all-in-one workspace. Attracts users who want a unified hub for all information but loses them when simple task tracking is all they need — complexity is a feature and a barrier simultaneously."
+    }
+  ],
+  "market_gaps": [
+    {
+      "id": "gap-1",
+      "description": "Every major todo app requires account creation before users can add their first task — creating friction and privacy exposure for users who just want to get started",
+      "affected_competitors": ["competitor-1", "competitor-2", "competitor-3", "competitor-4", "competitor-5"],
+      "opportunity_size": "high",
+      "suggested_feature": "Reinforce and market the zero-signup, zero-friction onboarding as the core differentiator — user can add a task in under 10 seconds from page load with no account ever needed"
+    },
+    {
+      "id": "gap-2",
+      "description": "No major todo app offers a credible, auditable zero-tracking guarantee — all major players collect analytics, share data with third parties, or are subject to cloud data policies users cannot verify",
+      "affected_competitors": ["competitor-1", "competitor-2", "competitor-3", "competitor-4", "competitor-5"],
+      "opportunity_size": "high",
+      "suggested_feature": "Make the privacy guarantee prominent and verifiable — add a visible badge or in-page notice confirming zero external requests, with a link to the auditable source code"
+    },
+    {
+      "id": "gap-3",
+      "description": "Most apps require internet connectivity and rely on cloud sync — users lose access or experience data inconsistency when offline",
+      "affected_competitors": ["competitor-1", "competitor-2", "competitor-3", "competitor-4"],
+      "opportunity_size": "medium",
+      "suggested_feature": "Add a Progressive Web App (PWA) manifest so the app can be installed and used fully offline as a cached app on mobile and desktop"
+    },
+    {
+      "id": "gap-4",
+      "description": "Free tiers across all major competitors are increasingly restricted by paywalls for basic features like reminders, recurring tasks, and filters — casual users feel punished",
+      "affected_competitors": ["competitor-1", "competitor-4", "competitor-5"],
+      "opportunity_size": "high",
+      "suggested_feature": "Maintain a strict 'forever free, all features included' policy and communicate it explicitly in the UI to attract users abandoning paywalled competitors"
+    },
+    {
+      "id": "gap-5",
+      "description": "No mainstream todo app allows users to export or own their data in a portable format without going through account settings — users are locked in",
+      "affected_competitors": ["competitor-1", "competitor-2", "competitor-3", "competitor-4", "competitor-5"],
+      "opportunity_size": "medium",
+      "suggested_feature": "Add a one-click JSON or plain-text export of all tasks from LocalStorage — reinforces data ownership messaging and provides a practical utility users appreciate"
+    },
+    {
+      "id": "gap-6",
+      "description": "Unexpected billing and subscription creep is a growing pain across freemium apps (TickTick auto-renewal, Any.do locked features) — users increasingly distrust apps that require payment information",
+      "affected_competitors": ["competitor-4", "competitor-5"],
+      "opportunity_size": "medium",
+      "suggested_feature": "Communicate the 'forever free, no payment information ever required' guarantee explicitly in the UI header or footer — a direct message to users fleeing subscription apps"
+    },
+    {
+      "id": "gap-7",
+      "description": "No popular task manager can be run as a fully self-contained, saveable single file — users with extreme privacy needs or offline requirements have no mainstream option",
+      "affected_competitors": ["competitor-1", "competitor-2", "competitor-3", "competitor-4", "competitor-5", "competitor-6"],
+      "opportunity_size": "low",
+      "suggested_feature": "Document and promote the single-file portability: the entire app can be saved to disk (Ctrl+S / Save As) and run from the local filesystem without any server or internet access"
+    }
+  ],
+  "insights_summary": {
+    "top_pain_points": [
+      "Mandatory account creation before first use — all 5 major competitors require sign-up",
+      "Privacy and data collection concerns — user tasks stored on third-party servers, shared with analytics and ad platforms",
+      "Feature bloat overwhelming casual users who just need a simple checklist",
+      "Paywalled basic features (reminders, recurring tasks, filters) frustrating free-tier users",
+      "Sync reliability issues causing lost tasks, ordering bugs, and multi-device inconsistencies",
+      "Vendor lock-in — task data tied to proprietary accounts with limited export options"
+    ],
+    "differentiator_opportunities": [
+      "Lead with the 'open in browser, add a task, done' narrative — no other major app can claim sub-10-second onboarding without any account",
+      "Make the privacy guarantee auditable and prominent — publish the zero-external-requests claim with a link to source code, which no SaaS competitor can match",
+      "Emphasize permanent free access with no tiers — position against Todoist and TickTick paywalls explicitly",
+      "PWA offline-first installation would be a unique capability among privacy-focused lightweight alternatives",
+      "Local data export (JSON/CSV) as a trust-building feature that reinforces data ownership and attracts users fleeing locked-in competitors"
+    ],
+    "market_trends": [
+      "Growing user awareness of data privacy in productivity apps, especially post-2023 regulatory landscape (GDPR enforcement, CCPA)",
+      "Increasing user fatigue with freemium paywalls — more users seeking genuinely free alternatives",
+      "Demand for offline-capable tools rising as users seek resilience against service outages and internet dependency",
+      "Privacy-first tools gaining traction in developer and technical communities as a credible alternative to cloud-first apps",
+      "Chinese-owned apps (TickTick) facing heightened scrutiny, creating opportunity for apps with clear data residency guarantees"
+    ]
+  },
+  "research_metadata": {
+    "search_queries_used": [
+      "Todoist complaints problems users 2025 reddit",
+      "Todoist complaints problems reddit 2025 2026",
+      "Microsoft To Do app complaints problems users reddit 2025",
+      "Microsoft To Do complaints problems reddit 2025 2026",
+      "Google Tasks complaints missing features problems users 2025",
+      "Google Tasks complaints problems limitations reddit 2025",
+      "TickTick app complaints privacy data collection user problems reddit 2025",
+      "TickTick complaints problems reddit 2025 2026",
+      "TickTick privacy China data server concerns reddit users",
+      "Any.do todo app user complaints problems 2025",
+      "Any.do todo app complaints privacy data collection reddit 2025",
+      "Notion todo tasks complaints too complex overkill reddit 2025",
+      "todo app privacy concerns data collection tracking account required complaints 2025",
+      "todo app privacy concerns data collection user complaints 2025 2026",
+      "todo app no account required no signup privacy first alternatives 2025",
+      "sign up required todo app frustration alternatives no account 2025",
+      "simple todo app no account no signup privacy local storage demand 2025 2026",
+      "Todoist premium paywall features free plan limitations complaints reddit",
+      "simple todo app users frustrated feature bloat complexity too many features 2025"
+    ],
+    "sources_consulted": [
+      "https://www.capterra.com/p/149339/Todoist-for-Business/reviews/",
+      "https://www.trustpilot.com/review/todoist.com",
+      "https://www.g2.com/products/todoist/reviews",
+      "https://www.softwareadvice.com/project-management/microsoft-to-do-profile/reviews/",
+      "https://techcommunity.microsoft.com/category/microsoftto-do",
+      "https://techcommunity.microsoft.com/discussions/to-do/microsoft-to-do-not-working/4471507",
+      "https://learn.microsoft.com/en-us/answers/questions/4714137/three-super-annoying-issues-to-bring-into-2025",
+      "https://crm.org/news/google-tasks-review",
+      "https://www.androidcentral.com/apps-software/google-tasks-rolls-out-its-long-overdue-deadline-feature-but-its-still-half-baked",
+      "https://thedigitalprojectmanager.com/tools/google-tasks-review/",
+      "https://www.trustradius.com/products/google-tasks/reviews",
+      "https://www.techradar.com/reviews/google-tasks",
+      "https://privacyspy.org/product/ticktick/",
+      "https://www.vpnsuper.com/blog/is-ticktick-safe",
+      "https://www.capterra.com/p/170641/TickTick/reviews/",
+      "https://www.cloudwards.net/ticktick-review/",
+      "https://alternativeto.net/software/ticktick/about/",
+      "https://www.capterra.com/p/173614/Any-do/reviews/",
+      "https://www.cloudwards.net/any-do-review/",
+      "https://thedigitalprojectmanager.com/tools/anydo-review/",
+      "https://appsumo.com/products/anydo/reviews/",
+      "https://www.g2.com/products/any-do/reviews",
+      "https://doist.com/privacy",
+      "https://baizaar.tools/todoist-pro-vs-free-2025/",
+      "https://www.androidauthority.com/best-todoist-alternatives-3615857/",
+      "https://tasksite.app/blog/simple-to-do-apps-no-signup",
+      "https://www.quora.com/What-are-biggest-problems-with-to-do-apps-you-are-using",
+      "https://iapp.org/news/a/10-areas-for-privacy-programs-to-focus-in-2025",
+      "https://upbase.io/blog/todoist-review/",
+      "https://www.morgen.so/blog-posts/ticktick-vs-todoist",
+      "https://efficient.app/apps/ticktick",
+      "https://work-management.org/to-do-list/ticktick-review/",
+      "https://forum.gettingthingsdone.com/threads/opinions-on-google-tasks.9783/",
+      "https://medium.com/@ruslansmelniks/why-users-abandon-notion-complexity-limitations-and-the-rise-of-ai-alternatives-cba91a95b535",
+      "https://unanswered.io/guide/is-notion-overkill-for-personal-use",
+      "https://www.xda-developers.com/notion-starting-to-fall-behind-alternatives-cant-see-myself-sticking-around/",
+      "https://nikofischer.com/17-app-odyssey-todoist-to-notion",
+      "https://affine.pro/blog/notion-alternative-notes",
+      "https://ones.com/blog/notion-ai-game-changer-or-overhyped-reddit-users-weigh-in/",
+      "https://tasksite.app/blog/simple-to-do-apps-no-signup",
+      "https://todo.uiineed.com/"
+    ],
+    "limitations": [
+      "Reddit-specific search results returned summaries rather than direct thread links — individual post counts and upvote data were not available to quantify frequency precisely",
+      "Apple Reminders was not deeply researched as it is iOS/macOS ecosystem-locked and less directly comparable to a browser-based web app",
+      "SimpleNote was excluded from deep analysis as its task management capability is incidental and user overlap is narrow",
+      "Any.do-specific Reddit feedback was sparse in 2025–2026 search results; pain points are synthesised from Capterra, Cloudwards, and AppSumo review aggregators",
+      "User review sentiment may skew negative as dissatisfied users are more likely to leave reviews than satisfied users",
+      "Pain point frequency is qualitative (based on review volume and repetition across sources) rather than statistically derived",
+      "Pricing and features may have changed since search data was indexed — competitor offerings should be re-verified before acting on specific feature gaps",
+      "Search results reflect publicly indexed content as of March 2026; private Reddit communities and gated enterprise review platforms were not accessible"
+    ]
+  },
+  "created_at": "2026-03-08T00:00:00Z"
+}

@@ -1,0 +1,134 @@
+{
+  "project_name": "My Todo List",
+  "project_type": "web-app",
+  "tech_stack": {
+    "primary_language": "JavaScript",
+    "frameworks": ["Vanilla JS (no framework)", "HTML5", "CSS3"],
+    "key_dependencies": ["LocalStorage API", "DOM API"]
+  },
+  "target_audience": {
+    "primary_persona": "Privacy-conscious individual who wants a fast, no-signup task manager they can use immediately in the browser",
+    "secondary_personas": [
+      "Minimalist productivity seekers who distrust data-hungry apps",
+      "Casual users needing a quick personal to-do list without installing anything",
+      "Developers or technical users who appreciate a self-contained, zero-dependency tool"
+    ],
+    "pain_points": [
+      "Popular task apps require account creation before use",
+      "Most task managers collect user data and use tracking/analytics",
+      "Feature-bloated apps are overwhelming for simple task tracking",
+      "Many apps require internet connectivity to function",
+      "Task data is stored on third-party servers without user control"
+    ],
+    "goals": [
+      "Track daily tasks without friction or sign-up barriers",
+      "Keep personal task data private and local to their device",
+      "Quickly add, edit, complete, and delete tasks in a clean interface",
+      "Access their task list on mobile and desktop seamlessly",
+      "Have tasks persist across browser sessions"
+    ],
+    "usage_context": "Daily personal task management, accessed via browser on both mobile and desktop. Used throughout the day to add, check off, and review tasks. No backend dependency — fully offline-capable."
+  },
+  "product_vision": {
+    "one_liner": "A zero-tracking, no-account-needed todo app that lets you start managing tasks instantly in your browser.",
+    "problem_statement": "Most task management apps require account creation, collect user data, and come loaded with features most users never need — creating unnecessary friction and privacy concerns for people who just want a simple, private place to track their tasks.",
+    "value_proposition": "My Todo List is the fastest way to start tracking tasks: open the page, type a task, press Add. No sign-up, no data collection, no external requests — your tasks stay on your device via LocalStorage, guaranteed.",
+    "success_metrics": [
+      "User can add their first task in under 10 seconds from page load",
+      "Zero third-party network requests made by the app",
+      "Tasks persist correctly across page refreshes and browser restarts",
+      "App is fully functional on mobile viewports (375px and above)",
+      "All CRUD operations (add, edit, complete, delete) work without errors",
+      "No personal data ever leaves the user's device"
+    ]
+  },
+  "current_state": {
+    "maturity": "mvp",
+    "existing_features": [
+      "Add new tasks via text input (button click or Enter key)",
+      "List all tasks in a clean card-based UI",
+      "Toggle task completion via checkbox (visual strikethrough for completed tasks)",
+      "Edit task title inline with Save/Cancel and keyboard shortcuts (Enter/Escape)",
+      "Delete individual tasks",
+      "Filter tasks by All / Active / Completed",
+      "LocalStorage persistence across page refreshes",
+      "Mobile-responsive layout with media queries",
+      "Accessible ARIA labels on interactive elements",
+      "Zero external dependencies — fully self-contained single HTML file",
+      "Privacy-first design with explicit no-tracking policy in code comments"
+    ],
+    "known_gaps": [
+      "No user authentication or multi-device sync",
+      "No due dates or deadlines for tasks",
+      "No priority levels (high/medium/low)",
+      "No task categories or tags",
+      "No dark mode",
+      "No drag-and-drop reordering",
+      "No backend or database integration",
+      "No multi-user or collaboration support",
+      "No bulk actions (e.g., clear all completed)",
+      "No task count or progress summary display",
+      "No keyboard shortcut to focus input from anywhere on the page"
+    ],
+    "technical_debt": [
+      "All code (HTML, CSS, JS) lives in a single file — no separation of concerns",
+      "No automated tests (unit or integration)",
+      "No build system or tooling (no bundler, linter, or formatter configured)",
+      "render() does a full DOM re-render on every change — no virtual DOM or diffing",
+      "No error boundary for LocalStorage quota exceeded scenarios",
+      "No input sanitization beyond basic trim (XSS safe via textContent but worth documenting)"
+    ]
+  },
+  "competitive_context": {
+    "alternatives": [
+      "Todoist",
+      "Microsoft To Do",
+      "Google Tasks",
+      "Apple Reminders",
+      "TickTick",
+      "Any.do",
+      "Notion (todo blocks)",
+      "SimpleNote with task lists"
+    ],
+    "differentiators": [
+      "Zero-tracking guarantee enforced in code — no analytics, cookies, or external requests; auditable via source code (unlike any SaaS competitor)",
+      "No account or sign-up required — open in browser, add a task in under 10 seconds (no competitor can match sub-10-second onboarding without an account)",
+      "Entirely self-contained single HTML file — can be saved locally and run offline without any server",
+      "No external CDN or third-party script dependencies",
+      "Extremely lightweight — loads instantly with no network round-trips",
+      "Forever free, all features included — no paywalled tiers unlike Todoist, TickTick, and Any.do",
+      "Deterministic local task ordering — no sync conflicts or random reordering (contrast with TickTick bugs)",
+      "Full data ownership — tasks never leave the device; no foreign/domestic server ever receives task data (addresses TickTick China-server concerns)"
+    ],
+    "market_position": "Positioned as the privacy-first, zero-friction alternative to mainstream task apps. Occupies a clear market gap: every major competitor requires sign-up and sends task data to third-party servers. My Todo List targets the growing segment of privacy-aware users fatigued by freemium paywalls, mandatory accounts, and data collection — competing on trust, immediacy, and data ownership rather than collaboration or power features.",
+    "competitor_pain_points": [
+      "Mandatory account creation before first use — all 5 major competitors require sign-up",
+      "Privacy and data collection concerns — user tasks stored on third-party servers, shared with analytics and ad platforms",
+      "Feature bloat overwhelming casual users who just need a simple checklist",
+      "Paywalled basic features (reminders, recurring tasks, filters) frustrating free-tier users",
+      "Sync reliability issues causing lost tasks, ordering bugs, and multi-device inconsistencies",
+      "Vendor lock-in — task data tied to proprietary accounts with limited export options"
+    ],
+    "competitor_analysis_available": true
+  },
+  "constraints": {
+    "technical": [
+      "LocalStorage is limited to ~5MB per origin — not suitable for large task datasets",
+      "LocalStorage is browser/device-specific — no cross-device sync without a backend",
+      "Single HTML file architecture limits code scalability for future feature growth",
+      "No build tooling means adding TypeScript, bundling, or testing requires setup investment",
+      "Vanilla JS DOM manipulation becomes harder to maintain as features grow"
+    ],
+    "resources": [
+      "Appears to be a solo developer project based on project structure",
+      "No package.json indicates minimal tooling investment — likely a small or individual team",
+      "MVP scope suggests a focused, time-boxed development effort"
+    ],
+    "dependencies": [
+      "Browser LocalStorage API (available in all modern browsers)",
+      "No external APIs, services, or CDN dependencies",
+      "No server infrastructure required for current version"
+    ]
+  },
+  "created_at": "2026-03-08T00:00:00Z"
+}

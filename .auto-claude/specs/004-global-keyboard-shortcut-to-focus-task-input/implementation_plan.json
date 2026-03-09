@@ -1,0 +1,142 @@
+{
+  "status": "in_progress",
+  "workflow_type": "server_first",
+  "summary": {
+    "total_phases": 1,
+    "total_subtasks": 5,
+    "completed_subtasks": 3,
+    "failed_subtasks": 0
+  },
+  "subtasks": [
+    {
+      "id": "setup",
+      "description": "Prepare isolated worktree and runtime",
+      "status": "completed"
+    },
+    {
+      "id": "add-shortcut-hint-element-below-the-task-input",
+      "description": "Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.",
+      "status": "completed"
+    },
+    {
+      "id": "implement-global-keydown-listener-to-focus-input",
+      "description": "Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).",
+      "status": "completed"
+    },
+    {
+      "id": "add-escape-key-handler-on-the-task-input-to-blur",
+      "description": "Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+      "status": "in_progress"
+    },
+    {
+      "id": "review",
+      "description": "Run AI review and prepare human handoff",
+      "status": "pending"
+    }
+  ],
+  "phases": [
+    {
+      "id": "implementation",
+      "name": "Implementation",
+      "subtasks": [
+        {
+          "id": "setup",
+          "description": "Prepare isolated worktree and runtime",
+          "status": "completed"
+        },
+        {
+          "id": "add-shortcut-hint-element-below-the-task-input",
+          "description": "Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.",
+          "status": "completed"
+        },
+        {
+          "id": "implement-global-keydown-listener-to-focus-input",
+          "description": "Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).",
+          "status": "completed"
+        },
+        {
+          "id": "add-escape-key-handler-on-the-task-input-to-blur",
+          "description": "Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+          "status": "in_progress"
+        },
+        {
+          "id": "review",
+          "description": "Run AI review and prepare human handoff",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "qa_signoff": null,
+  "status_history": [
+    {
+      "status": "backlog",
+      "message": "Spec created from roadmap feature.",
+      "timestamp": "2026-03-08T23:25:52.941Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-create-spec"
+    },
+    {
+      "status": "planning",
+      "message": "Build orchestration started and worktree prepared.",
+      "timestamp": "2026-03-09T09:39:21.140Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "project": "website",
+        "worktreePath": "/opt/projects/website/.auto-claude/worktrees/tasks/004-global-keyboard-shortcut-to-focus-task-input"
+      }
+    },
+    {
+      "status": "planning",
+      "message": "Planning completed and implementation subtasks were generated.",
+      "timestamp": "2026-03-09T09:39:45.444Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "totalSubtasks": 5
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 1/3: Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.",
+      "timestamp": "2026-03-09T09:39:45.445Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-shortcut-hint-element-below-the-task-input",
+        "subtaskDescription": "Add a small hint element (e.g. 'Press / to add a task') rendered below the add-form input field. Style it with muted/secondary text so it's unobtrusive. Also update the input placeholder to 'Add a new task…' (already done) — no placeholder change needed, just add the hint element and its CSS.",
+        "index": 1,
+        "total": 3
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 2/3: Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).",
+      "timestamp": "2026-03-09T09:40:26.902Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "implement-global-keydown-listener-to-focus-input",
+        "subtaskDescription": "Attach a keydown listener to document that calls input.focus() and prevents default when key === '/' and the active element is not an input, textarea, select, or contenteditable element. This ensures the shortcut doesn't fire while the user is already typing elsewhere (e.g. in the task edit input).",
+        "index": 2,
+        "total": 3
+      }
+    },
+    {
+      "status": "in_progress",
+      "message": "Started subtask 3/3: Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+      "timestamp": "2026-03-09T09:40:51.623Z",
+      "actor": "cloudone-agent",
+      "source": "build-executor",
+      "data": {
+        "subtaskId": "add-escape-key-handler-on-the-task-input-to-blur",
+        "subtaskDescription": "Extend the existing keydown listener on #new-task-input to also handle Escape: call input.blur() so focus returns to the page body, allowing the user to exit the input without submitting or clearing anything.",
+        "index": 3,
+        "total": 3
+      }
+    }
+  ],
+  "created_at": "2026-03-08T23:25:52.941Z",
+  "updated_at": "2026-03-09T09:40:51.623Z"
+}

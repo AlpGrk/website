@@ -1,0 +1,92 @@
+{
+  "status": "backlog",
+  "workflow_type": "feature",
+  "summary": {
+    "total_phases": 1,
+    "total_subtasks": 6,
+    "completed_subtasks": 0,
+    "failed_subtasks": 0
+  },
+  "subtasks": [
+    {
+      "id": "setup",
+      "description": "Dark mode activates automatically when the OS/browser reports prefers-color-scheme: dark",
+      "status": "pending"
+    },
+    {
+      "id": "task-2",
+      "description": "A manual toggle button allows users to override the system preference",
+      "status": "pending"
+    },
+    {
+      "id": "task-3",
+      "description": "The selected theme preference is saved to LocalStorage and restored on next visit",
+      "status": "pending"
+    },
+    {
+      "id": "task-4",
+      "description": "All UI elements (inputs, buttons, cards, badges) are legible and accessible in dark mode",
+      "status": "pending"
+    },
+    {
+      "id": "task-5",
+      "description": "Color contrast ratios meet WCAG AA standards in both light and dark modes",
+      "status": "pending"
+    },
+    {
+      "id": "review",
+      "description": "The toggle is accessible via keyboard and has a proper ARIA label",
+      "status": "pending"
+    }
+  ],
+  "phases": [
+    {
+      "id": "implementation",
+      "name": "Implementation",
+      "subtasks": [
+        {
+          "id": "setup",
+          "description": "Dark mode activates automatically when the OS/browser reports prefers-color-scheme: dark",
+          "status": "pending"
+        },
+        {
+          "id": "task-2",
+          "description": "A manual toggle button allows users to override the system preference",
+          "status": "pending"
+        },
+        {
+          "id": "task-3",
+          "description": "The selected theme preference is saved to LocalStorage and restored on next visit",
+          "status": "pending"
+        },
+        {
+          "id": "task-4",
+          "description": "All UI elements (inputs, buttons, cards, badges) are legible and accessible in dark mode",
+          "status": "pending"
+        },
+        {
+          "id": "task-5",
+          "description": "Color contrast ratios meet WCAG AA standards in both light and dark modes",
+          "status": "pending"
+        },
+        {
+          "id": "review",
+          "description": "The toggle is accessible via keyboard and has a proper ARIA label",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "qa_signoff": null,
+  "status_history": [
+    {
+      "status": "backlog",
+      "message": "Spec created from roadmap feature.",
+      "timestamp": "2026-03-09T08:37:53.315Z",
+      "actor": "cloudone-agent",
+      "source": "auto-claude-create-spec"
+    }
+  ],
+  "created_at": "2026-03-09T08:37:53.315Z",
+  "updated_at": "2026-03-09T08:37:53.315Z"
+}
